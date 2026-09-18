@@ -3,41 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İyi ki Doğdun! 🎂</title>
+    <title>İyi ki Doğdun Kanka! 🎂</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="pink-theme">
 
 <div class="card">
-    <div class="music-container">
-        <!-- Spotify Albüm / Playlist Kapak Görseli Temsili -->
-        <svg class="playlist-header-img" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-            <rect width="500" height="500" fill="#000000"/>
-            <rect x="150" y="150" width="200" height="200" rx="45" fill="#f43f5e"/>
-            <path d="M 230 205 L 305 205 C 325 205, 335 215, 335 230 C 335 242, 325 250, 310 250 L 310 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
-            <polygon points="238,190 238,220 215,205" fill="#ffffff"/>
-            <path d="M 270 295 L 195 295 C 175 295, 165 285, 165 270 C 165 258, 175 250, 190 250 L 190 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
-            <polygon points="262,310 262,280 285,295" fill="#ffffff"/>
-        </svg>
+    <div id="step-intro" class="screen">
+        <h1 class="main-title">Doğum Günün Kutlu Olsun! 🎉</h1>
+        <p class="sub-desc">Sana harika bir sürprizim var dostum.</p>
+        <button id="intro-btn" class="main-btn">Devam Et 🚀</button>
+    </div>
 
-        <div class="playlist-name">Doğum Günün Kutlu Olsun! 🎉</div>
-        <div class="playlist-sub">Sana Özel Hazırladığım Şarkılar 🎵</div>
-        
-        <!-- Dönen Plak Efekti -->
-        <div class="vinyl-container">
-            <div class="record"></div>
-            <svg class="record-center" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                <rect width="500" height="500" fill="#000000"/>
-                <rect x="150" y="150" width="200" height="200" rx="45" fill="#f43f5e"/>
-            </svg>
+    <div id="step-sure" class="screen hidden">
+        <h2>Hediyeni açmak istediğinden emin misin? 🤔</h2>
+        <div class="choice-container">
+            <button id="no-btn" class="choice-btn secondary-btn">Hayır 🙄</button>
+            <button id="yes-btn" class="choice-btn primary-btn">Evet! 🤩</button>
+        </div>
+    </div>
+
+    <div id="step-countdown" class="screen hidden">
+        <h2>Sürpriz Hazırlanıyor... ⏳</h2>
+        <div id="countdown-val" class="countdown-number">10</div>
+        <p class="sub-desc">Geri sayım bitiyor, sıkı dur!</p>
+    </div>
+
+    <div id="step-playlist" class="screen hidden">
+        <div class="playlist-header-img-container">
+            <img src="1000015564.jpg" alt="Playlist Kapağı" class="playlist-header-img">
         </div>
 
-        <p class="music-desc">Keyifle dinlemen ve mutlu yaşlar geçirmen dileğiyle...</p>
+        <div class="playlist-name">En İyi Dostun Playlist'i 🎧</div>
+        <div class="playlist-sub">Sadece sana özel seçildi 🎶</div>
         
-        <!-- Spotify Çalma Listesi Linkin Ekrandı -->
-        <a href="https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=R71BY3S-QamVvEM8JSp-cQ&utm_source=copy-link&pt=14c52dc9c4f54076abe5db5a3f6cb069" target="_blank" class="spotify-link">Spotify'da Dinle 🎧</a>
+        <div class="vinyl-container">
+            <div class="record"></div>
+            <div class="record-center-img-wrapper">
+                <img src="1000015564.jpg" alt="Plak Ortası" class="record-center-img">
+            </div>
+        </div>
+
+        <p class="music-desc">İyi ki varsın kanka, nice mutlu senelere!</p>
+        
+        <a href="Https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=R71BY3S-QamVvEM8JSp-cQ&utm_source=copy-link&pt=14c52dc9c4f54076abe5db5a3f6cb069" target="_blank" class="spotify-link">Spotify'da Dinle 🎸</a>
     </div>
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>

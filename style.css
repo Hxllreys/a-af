@@ -7,7 +7,7 @@
 }
 
 body { 
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%); 
+    background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be123c 100%); 
     color: #f1f5f9; 
     display: flex; 
     justify-content: center; 
@@ -18,9 +18,9 @@ body {
 
 .card { 
     position: relative;
-    background: rgba(30, 41, 59, 0.85); 
+    background: rgba(136, 19, 55, 0.85); 
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(251, 113, 133, 0.3);
     padding: 35px 25px; 
     border-radius: 24px; 
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
@@ -29,33 +29,114 @@ body {
     text-align: center; 
 }
 
-.playlist-header-img { 
-    width: 140px; 
-    height: 140px; 
-    border-radius: 20px; 
-    margin: 0 auto 20px auto; 
-    box-shadow: 0 10px 25px rgba(244, 63, 94, 0.3); 
-    display: block; 
+.hidden { display: none !important; }
+
+.main-title {
+    font-size: 1.6rem;
+    color: #fff1f2;
+    margin-bottom: 12px;
+    font-weight: 700;
 }
 
-.playlist-name { 
-    font-size: 1.4rem; 
-    font-weight: 700; 
-    color: #f8fafc; 
-    margin-bottom: 6px; 
+h2 { 
+    color: #fff1f2; 
+    margin-bottom: 20px; 
+    font-size: 1.3rem; 
+    font-weight: 600; 
 }
 
-.playlist-sub { 
+.sub-desc { 
+    color: #fbcfe8; 
     font-size: 0.95rem; 
-    color: #94a3b8; 
     margin-bottom: 25px; 
 }
 
+.main-btn, .choice-btn { 
+    background: linear-gradient(135deg, #f43f5e, #e11d48); 
+    color: white; 
+    border: none; 
+    padding: 14px 28px; 
+    border-radius: 30px; 
+    font-size: 1rem; 
+    font-weight: 600;
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+    box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+    width: 100%;
+}
+
+/* Emin misin ekranı butonları */
+.choice-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.choice-btn {
+    flex: 1;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+    color: #fce7f3;
+}
+
+/* Geri Sayım Numarası */
+.countdown-number {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #ffe4e6;
+    margin: 20px 0;
+    text-shadow: 0 0 20px rgba(244, 63, 94, 0.8);
+    animation: pulseNum 1s infinite alternate;
+}
+
+@keyframes pulseNum {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
+}
+
+/* Playlist & Kedi Fotoğrafı Tasarımı */
+.playlist-header-img-container {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 15px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.playlist-header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playlist-name { 
+    font-size: 1.35rem; 
+    font-weight: 700; 
+    color: #ffffff; 
+    margin-bottom: 4px; 
+}
+
+.playlist-sub { 
+    font-size: 0.9rem; 
+    color: #fbcfe8; 
+    margin-bottom: 15px; 
+}
+
+/* Dönen Plak Detayları */
 .vinyl-container { 
     position: relative; 
     width: 130px; 
     height: 130px; 
-    margin: 20px auto; 
+    margin: 15px auto; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
@@ -71,12 +152,20 @@ body {
     animation: spin 7s linear infinite; 
 }
 
-.record-center { 
-    width: 38px; 
-    height: 38px; 
-    border-radius: 50%; 
-    position: absolute; 
-    z-index: 2; 
+.record-center-img-wrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    overflow: hidden;
+    border: 1px solid #fff;
+}
+
+.record-center-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @keyframes spin { 
@@ -84,11 +173,10 @@ body {
 }
 
 .music-desc { 
-    color: #cbd5e1; 
-    font-size: 0.9rem; 
-    margin-top: 15px; 
-    margin-bottom: 20px;
-    line-height: 1.4;
+    color: #fce7f3; 
+    font-size: 0.88rem; 
+    margin-top: 10px; 
+    margin-bottom: 15px;
 }
 
 .spotify-link { 
@@ -96,11 +184,11 @@ body {
     background: #1DB954; 
     color: white; 
     text-decoration: none; 
-    padding: 14px 28px; 
+    padding: 12px 26px; 
     border-radius: 30px; 
     font-weight: 600; 
-    font-size: 1rem;
-    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3); 
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4); 
     transition: transform 0.2s, background 0.2s;
 }
 
