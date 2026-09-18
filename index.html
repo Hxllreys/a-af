@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İyi ki Doğdun Kanka! 🎂</title>
+    <title>İyi ki Doğdun Kıral! 🎂</title>
     <style>
         * { 
             box-sizing: border-box; 
@@ -14,8 +14,8 @@
         }
 
         body { 
-            background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be123c 100%); 
-            color: #f1f5f9; 
+            background: linear-gradient(135deg, #fbcfe8 0%, #f472b6 50%, #db2777 100%); 
+            color: #500724; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
@@ -25,12 +25,12 @@
 
         .card { 
             position: relative;
-            background: rgba(136, 19, 55, 0.85); 
+            background: rgba(255, 241, 242, 0.92); 
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(251, 113, 133, 0.3);
+            border: 1px solid rgba(244, 114, 182, 0.4);
             padding: 35px 25px; 
             border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
+            box-shadow: 0 15px 35px rgba(219, 39, 119, 0.25); 
             width: 100%; 
             max-width: 400px; 
             text-align: center; 
@@ -40,26 +40,26 @@
 
         .main-title {
             font-size: 1.6rem;
-            color: #fff1f2;
+            color: #831843;
             margin-bottom: 12px;
             font-weight: 700;
         }
 
         h2 { 
-            color: #fff1f2; 
+            color: #831843; 
             margin-bottom: 20px; 
             font-size: 1.3rem; 
             font-weight: 600; 
         }
 
         .sub-desc { 
-            color: #fbcfe8; 
+            color: #9d174d; 
             font-size: 0.95rem; 
             margin-bottom: 25px; 
         }
 
         .main-btn, .choice-btn { 
-            background: linear-gradient(135deg, #f43f5e, #e11d48); 
+            background: linear-gradient(135deg, #f472b6, #db2777); 
             color: white; 
             border: none; 
             padding: 14px 28px; 
@@ -68,7 +68,7 @@
             font-weight: 600;
             cursor: pointer; 
             transition: transform 0.1s ease; 
-            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+            box-shadow: 0 4px 15px rgba(219, 39, 119, 0.3);
             width: 100%;
         }
 
@@ -85,18 +85,18 @@
         }
 
         .secondary-btn {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(244, 114, 182, 0.2);
+            border: 1px solid rgba(244, 114, 182, 0.4);
             box-shadow: none;
-            color: #fce7f3;
+            color: #831843;
         }
 
         .countdown-number {
             font-size: 4rem;
             font-weight: 800;
-            color: #ffe4e6;
+            color: #db2777;
             margin: 20px 0;
-            text-shadow: 0 0 20px rgba(244, 63, 94, 0.8);
+            text-shadow: 0 0 15px rgba(244, 114, 182, 0.6);
         }
 
         .playlist-header-img-container {
@@ -105,8 +105,8 @@
             margin: 0 auto 15px auto;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(219, 39, 119, 0.2);
+            border: 2px solid #f472b6;
         }
 
         .playlist-header-img {
@@ -118,13 +118,13 @@
         .playlist-name { 
             font-size: 1.35rem; 
             font-weight: 700; 
-            color: #ffffff; 
+            color: #831843; 
             margin-bottom: 4px; 
         }
 
         .playlist-sub { 
             font-size: 0.9rem; 
-            color: #fbcfe8; 
+            color: #9d174d; 
             margin-bottom: 15px; 
         }
 
@@ -141,10 +141,10 @@
         .record { 
             width: 130px; 
             height: 130px; 
-            background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); 
+            background: radial-gradient(circle, #222 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); 
             border-radius: 50%; 
             position: absolute; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.7); 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3); 
             animation: spin 7s linear infinite; 
         }
 
@@ -155,7 +155,7 @@
             position: absolute;
             z-index: 2;
             overflow: hidden;
-            border: 1px solid #fff;
+            border: 2px solid #f472b6;
         }
 
         .record-center-img {
@@ -169,10 +169,11 @@
         }
 
         .music-desc { 
-            color: #fce7f3; 
+            color: #9d174d; 
             font-size: 0.88rem; 
             margin-top: 10px; 
             margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .spotify-link { 
@@ -197,36 +198,32 @@
 <body>
 
 <div class="card">
-    <!-- 1. Adım: Kapak Ekranı -->
     <div id="step-intro" class="screen">
-        <h1 class="main-title">Doğum Günün Kutlu Olsun! 🎉</h1>
-        <p class="sub-desc">Sana harika bir sürprizim var dostum.</p>
+        <h1 class="main-title">Doğum Günün Kutlu Olsun Kıral! 🎉</h1>
+        <p class="sub-desc">Sana harika bir sürprizim var kıral.</p>
         <button onclick="goNext()" class="main-btn">Devam Et 🚀</button>
     </div>
 
-    <!-- 2. Adım: Emin misin? Ekranı -->
     <div id="step-sure" class="screen hidden">
-        <h2>Hediyeni açmak istediğinden emin misin? 🤔</h2>
+        <h2>Hediyeni açmak istediğinden emin misin kıral? 🤔</h2>
         <div class="choice-container">
             <button id="no-btn" onclick="shrinkNo()" class="choice-btn secondary-btn">Hayır 🙄</button>
             <button onclick="startCountdown()" class="choice-btn primary-btn" id="yes-btn">Evet! 🤩</button>
         </div>
     </div>
 
-    <!-- 3. Adım: 10'dan Geri Sayım Ekranı -->
     <div id="step-countdown" class="screen hidden">
-        <h2>Sürpriz Hazırlanıyor... ⏳</h2>
+        <h2>Sürpriz Hazırlanıyor Kıral... ⏳</h2>
         <div id="countdown-val" class="countdown-number">10</div>
         <p class="sub-desc">Geri sayım bitiyor, sıkı dur!</p>
     </div>
 
-    <!-- 4. Adım: Spotify Playlist ve Kedi Fotoğraflı Kapak -->
     <div id="step-playlist" class="screen hidden">
         <div class="playlist-header-img-container">
             <img src="1000015564.jpg" alt="Playlist Kapağı" class="playlist-header-img">
         </div>
 
-        <div class="playlist-name">En İyi Dostun Playlist'i 🎧</div>
+        <div class="playlist-name">İyi ki Doğdun Kıral 🎧</div>
         <div class="playlist-sub">Sadece sana özel seçildi 🎶</div>
         
         <div class="vinyl-container">
@@ -236,9 +233,9 @@
             </div>
         </div>
 
-        <p class="music-desc">İyi ki varsın kanka, nice mutlu senelere!</p>
+        <p class="music-desc">İyi ki varsın kıral, nice mutlu senelere!</p>
         
-        <a href="https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=R71BY3S-QamVvEM8JSp-cQ&utm_source=copy-link&pt=14c52dc9c4f54076abe5db5a3f6cb069" target="_blank" class="spotify-link">Spotify'da Dinle 🎸</a>
+        <a href="Https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=R71BY3S-QamVvEM8JSp-cQ&utm_source=copy-link&pt=14c52dc9c4f54076abe5db5a3f6cb069" target="_blank" class="spotify-link">Spotify'da Dinle 🎸</a>
     </div>
 </div>
 
