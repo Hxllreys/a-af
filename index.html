@@ -9,7 +9,6 @@
 <body>
 
 <div class="card">
-    <!-- Kalp Animasyonu / Yükleme Ekranı -->
     <div id="heart-anim-wrapper" class="heart-canvas-container hidden">
         <canvas id="heartCanvas" width="340" height="340"></canvas>
         <div class="loading-bar-container">
@@ -18,7 +17,6 @@
         <div id="loading-text" class="loading-text">Yükleniyor %0</div>
     </div>
 
-    <!-- 1. Adım: Slider -->
     <div id="step-1">
         <h2>Beni ne kadar özledin? 💭</h2>
         <div class="percent" id="percent-val">%0</div>
@@ -32,7 +30,6 @@
         <button id="next-btn" class="main-btn" disabled>Devam Et</button>
     </div>
 
-    <!-- 2. Adım: Hediye Kutuları Seçim Alanı -->
     <div id="step-2" class="hidden">
         <h2>Sürprizlerin Hazır 🎁</h2>
         <p class="sub-desc">Açmak istediğin kutuya tıkla:</p>
@@ -55,7 +52,6 @@
         </div>
     </div>
 
-    <!-- Hediye 1: Not Kutusu -->
     <div id="note-box" class="hidden">
         <div class="journal-box">
             <div class="journal-header">Nice mutlu senelere... 📖</div>
@@ -67,7 +63,6 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
-    <!-- Hediye 2: Müzik Kutusu -->
     <div id="music-box" class="hidden">
         <div>
             <svg class="playlist-header-img" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -100,10 +95,19 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
-    <!-- Hediye 3: Video Kutusu (Kart Destesi Modu) -->
     <div id="video-box" class="hidden">
         <h2>Anılarımız 🎬</h2>
-        <p class="sub-desc">Diğer videoya geçmek için butona basabilirsin</p>
+        
+        <div class="story-box">
+            <p>
+                Şam ve Zeyi'in hikayesini bilirsin... Onların arasındaki bağ ne kadar güçlü olursa olsun, ne yazık ki sanaldan öteye geçemedi. Hayatın getirdiği engeller, aradaki mesafeler ve bazı insanların birbirleriyle olmasına engel olması yüzünden ilişkileri hep bir ekranın arkasında kaldı.
+            </p>
+            <p>
+                Ama biz onlar gibi sanalda kilitli kalmak zorunda değiliz. Tüm bu sorunlara ve engellere rağmen bizim bu hikayeyi yarım bırakmamamız, ne olursa olsun realde görüşmemiz gerekiyor.
+            </p>
+        </div>
+
+        <p class="sub-desc" style="margin-top: 15px; margin-bottom: 10px;">Diğer videoya geçmek için butona basabilirsin:</p>
 
         <div class="card-stack-container">
             <div class="card-stack" id="videoStack">
