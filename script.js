@@ -1,4 +1,3 @@
-// Elemanların seçilmesi
 const slider = document.getElementById("myRange");
 const output = document.getElementById("demo");
 const sliderText = document.getElementById("sliderText");
@@ -9,25 +8,23 @@ const ctx = canvas.getContext("2d");
 const progressBar = document.getElementById("progressBar");
 const loadingText = document.getElementById("loadingText");
 
-// Slider Değer Değişimi
 slider.oninput = function() {
     output.innerHTML = this.value;
     
     if (this.value == 100) {
         sliderText.innerHTML = "Harika! Sürpriz Yükleniyor... ❤️";
-        slider.disabled = true; // Slider'ı kilitler
+        slider.disabled = true;
         startHeartAnimation();
     }
 };
 
-// Kalp Çizim Animasyonu
 function startHeartAnimation() {
     heartCard.style.display = "block";
     let progress = 0;
     let t = 0;
 
-    ctx.translate(150, 150); // Kalbi merkeze al
-    ctx.strokeStyle = "#ff4081";
+    ctx.translate(150, 150);
+    ctx.strokeStyle = "#ff69b4";
     ctx.lineWidth = 2;
 
     const interval = setInterval(() => {
@@ -37,7 +34,6 @@ function startHeartAnimation() {
         progressBar.style.width = progress + "%";
         loadingText.innerHTML = "%" + progress + " Yükleniyor...";
 
-        // Matematiksel Kalp Formülü
         if (t <= Math.PI * 2) {
             let x = 16 * Math.pow(Math.sin(t), 3);
             let y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
@@ -51,13 +47,12 @@ function startHeartAnimation() {
             clearInterval(interval);
             setTimeout(() => {
                 heartCard.style.display = "none";
-                contentBoxes.style.display = "block"; // Kutuları göster
+                contentBoxes.style.display = "block";
             }, 500);
         }
     }, 50);
 }
 
-// 2. Kutu Plak ve Müzik Oynatıcı Fonksiyonu
 function togglePlay() {
     const audio = document.getElementById('audioPlayer');
     const vinyl = document.getElementById('vinyl');
