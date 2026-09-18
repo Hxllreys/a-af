@@ -107,7 +107,7 @@ function backToGifts() {
     document.querySelectorAll('video').forEach(v => v.pause());
 }
 
-/* YÜKLEME BARLI HIZLI KALP ANİMASYONU */
+/* YÜKLEME BARLI HIZLI KALP VE BLOOM YAZI ANİMASYONU */
 function runHeartAnimation(onComplete) {
     const wrapper = document.getElementById('heart-anim-wrapper');
     const canvas = document.getElementById('heartCanvas');
@@ -141,7 +141,7 @@ function runHeartAnimation(onComplete) {
             ctx.beginPath();
             ctx.strokeStyle = '#f43f5e';
             ctx.lineWidth = 3.5;
-            ctx.shadowBlur = 12;
+            ctx.shadowBlur = 15;
             ctx.shadowColor = '#f43f5e';
             ctx.lineCap = 'round';
 
@@ -160,10 +160,24 @@ function runHeartAnimation(onComplete) {
 
             setTimeout(animate, 6);
         } else {
+            // Animasyon bitti, içine bloom (glowing) efektli yazıyı yazıyoruz
+            ctx.fillStyle = '#ffffff';
+            ctx.shadowColor = '#ff4757';
+            ctx.shadowBlur = 25;
+            ctx.font = 'bold 26px "Segoe UI", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Güçlü parlama için aynı yazıyı üst üste 3 kere basıyoruz
+            for (let i = 0; i < 3; i++) {
+                ctx.fillText("10 ocak 202∞", cx, cy);
+            }
+
+            // Yazıyı rahatça görebilmesi için bekleme süresini 1.5 saniye yapıyoruz
             setTimeout(() => {
                 wrapper.classList.add('hidden');
                 if (onComplete) onComplete();
-            }, 200);
+            }, 1500);
         }
     }
 

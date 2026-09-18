@@ -9,7 +9,6 @@
 <body>
 
 <div class="card">
-    <!-- Kalp Animasyonu / Yükleme Ekranı -->
     <div id="heart-anim-wrapper" class="heart-canvas-container hidden">
         <canvas id="heartCanvas" width="340" height="340"></canvas>
         <div class="loading-bar-container">
@@ -18,7 +17,6 @@
         <div id="loading-text" class="loading-text">Yükleniyor %0</div>
     </div>
 
-    <!-- 1. Adım: Slider -->
     <div id="step-1">
         <h2>Beni ne kadar özledin? 💭</h2>
         <div class="percent" id="percent-val">%0</div>
@@ -32,57 +30,34 @@
         <button id="next-btn" class="main-btn" disabled>Devam Et</button>
     </div>
 
-    <!-- 2. Adım: Hediye Kutuları Seçim Alanı (YENİ 3D KUTULAR) -->
     <div id="step-2" class="hidden">
         <h2>Sürprizlerin Hazır 🎁</h2>
         <p class="sub-desc">Açmak istediğin kutuya tıkla:</p>
         
         <div class="boxes-container">
-            <!-- 1. Kutu -->
             <div class="gift-box-wrapper" id="box-1">
                 <div class="gift-box">
-                    <div class="bow">
-                        <div class="bow-left"></div>
-                        <div class="bow-right"></div>
-                        <div class="bow-center"></div>
-                    </div>
-                    <div class="box-lid"></div>
-                    <div class="box-body"></div>
+                    <div class="ribbon-bow"></div>
                 </div>
                 <div class="gift-title">1. Kutu</div>
             </div>
             
-            <!-- 2. Kutu -->
             <div class="gift-box-wrapper" id="box-2">
                 <div class="gift-box">
-                    <div class="bow">
-                        <div class="bow-left"></div>
-                        <div class="bow-right"></div>
-                        <div class="bow-center"></div>
-                    </div>
-                    <div class="box-lid"></div>
-                    <div class="box-body"></div>
+                    <div class="ribbon-bow"></div>
                 </div>
                 <div class="gift-title">2. Kutu</div>
             </div>
 
-            <!-- 3. Kutu -->
             <div class="gift-box-wrapper" id="box-3">
                 <div class="gift-box">
-                    <div class="bow">
-                        <div class="bow-left"></div>
-                        <div class="bow-right"></div>
-                        <div class="bow-center"></div>
-                    </div>
-                    <div class="box-lid"></div>
-                    <div class="box-body"></div>
+                    <div class="ribbon-bow"></div>
                 </div>
                 <div class="gift-title">3. Kutu ✨</div>
             </div>
         </div>
     </div>
 
-    <!-- Hediye 1: Not Kutusu -->
     <div id="note-box" class="hidden">
         <div class="journal-box">
             <div class="journal-header">Nice mutlu senelere... 📖</div>
@@ -94,7 +69,6 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
-    <!-- Hediye 2: Müzik Kutusu -->
     <div id="music-box" class="hidden">
         <div>
             <svg class="playlist-header-img" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -114,10 +88,6 @@
                 <svg class="record-center" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
                     <rect width="500" height="500" fill="#000000"/>
                     <rect x="150" y="150" width="200" height="200" rx="45" fill="#80a0c0"/>
-                    <path d="M 230 205 L 305 205 C 325 205, 335 215, 335 230 C 335 242, 325 250, 310 250 L 310 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
-                    <polygon points="238,190 238,220 215,205" fill="#ffffff"/>
-                    <path d="M 270 295 L 195 295 C 175 295, 165 285, 165 270 C 165 258, 175 250, 190 250 L 190 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
-                    <polygon points="262,310 262,280 285,295" fill="#ffffff"/>
                 </svg>
             </div>
 
@@ -127,7 +97,6 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
-    <!-- Hediye 3: Video Kutusu -->
     <div id="video-box" class="hidden">
         <h2>Anılarımız 🎬</h2>
         
@@ -148,7 +117,6 @@
                     <p class="video-title">1. Video 🎬</p>
                     <video controls playsinline preload="metadata">
                         <source src="1000015550.mp4" type="video/mp4">
-                        Tarayıcınız video oynatmayı desteklemiyor.
                     </video>
                 </div>
 
@@ -156,7 +124,6 @@
                     <p class="video-title">2. Video 🎬</p>
                     <video controls playsinline preload="metadata">
                         <source src="video2.mp4" type="video/mp4">
-                        Tarayıcınız video oynatmayı desteklemiyor.
                     </video>
                 </div>
             </div>
