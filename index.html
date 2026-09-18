@@ -4,31 +4,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>İyi ki Doğdun Kanka! 🎂</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * { 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be123c 100%); 
+            color: #f1f5f9; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px 15px; 
+        }
+
+        .card { 
+            position: relative;
+            background: rgba(136, 19, 55, 0.85); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            padding: 35px 25px; 
+            border-radius: 24px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
+            width: 100%; 
+            max-width: 400px; 
+            text-align: center; 
+        }
+
+        .hidden { display: none !important; }
+
+        .main-title {
+            font-size: 1.6rem;
+            color: #fff1f2;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        h2 { 
+            color: #fff1f2; 
+            margin-bottom: 20px; 
+            font-size: 1.3rem; 
+            font-weight: 600; 
+        }
+
+        .sub-desc { 
+            color: #fbcfe8; 
+            font-size: 0.95rem; 
+            margin-bottom: 25px; 
+        }
+
+        .main-btn, .choice-btn { 
+            background: linear-gradient(135deg, #f43f5e, #e11d48); 
+            color: white; 
+            border: none; 
+            padding: 14px 28px; 
+            border-radius: 30px; 
+            font-size: 1rem; 
+            font-weight: 600;
+            cursor: pointer; 
+            transition: transform 0.1s ease; 
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+            width: 100%;
+        }
+
+        .choice-container {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .choice-btn {
+            flex: 1;
+        }
+
+        .secondary-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+            color: #fce7f3;
+        }
+
+        .countdown-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ffe4e6;
+            margin: 20px 0;
+            text-shadow: 0 0 20px rgba(244, 63, 94, 0.8);
+        }
+
+        .playlist-header-img-container {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .playlist-header-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .playlist-name { 
+            font-size: 1.35rem; 
+            font-weight: 700; 
+            color: #ffffff; 
+            margin-bottom: 4px; 
+        }
+
+        .playlist-sub { 
+            font-size: 0.9rem; 
+            color: #fbcfe8; 
+            margin-bottom: 15px; 
+        }
+
+        .vinyl-container { 
+            position: relative; 
+            width: 130px; 
+            height: 130px; 
+            margin: 15px auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        .record { 
+            width: 130px; 
+            height: 130px; 
+            background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); 
+            border-radius: 50%; 
+            position: absolute; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.7); 
+            animation: spin 7s linear infinite; 
+        }
+
+        .record-center-img-wrapper {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+
+        .record-center-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes spin { 
+            100% { transform: rotate(360deg); } 
+        }
+
+        .music-desc { 
+            color: #fce7f3; 
+            font-size: 0.88rem; 
+            margin-top: 10px; 
+            margin-bottom: 15px;
+        }
+
+        .spotify-link { 
+            display: inline-block; 
+            background: #1DB954; 
+            color: white; 
+            text-decoration: none; 
+            padding: 12px 26px; 
+            border-radius: 30px; 
+            font-weight: 600; 
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.4); 
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .spotify-link:hover {
+            background: #1aa34a;
+            transform: scale(1.03);
+        }
+    </style>
 </head>
-<body class="pink-theme">
+<body>
 
 <div class="card">
+    <!-- 1. Adım: Kapak Ekranı -->
     <div id="step-intro" class="screen">
         <h1 class="main-title">Doğum Günün Kutlu Olsun! 🎉</h1>
         <p class="sub-desc">Sana harika bir sürprizim var dostum.</p>
-        <button id="intro-btn" class="main-btn">Devam Et 🚀</button>
+        <button onclick="goNext()" class="main-btn">Devam Et 🚀</button>
     </div>
 
+    <!-- 2. Adım: Emin misin? Ekranı -->
     <div id="step-sure" class="screen hidden">
         <h2>Hediyeni açmak istediğinden emin misin? 🤔</h2>
         <div class="choice-container">
-            <button id="no-btn" class="choice-btn secondary-btn">Hayır 🙄</button>
-            <button id="yes-btn" class="choice-btn primary-btn">Evet! 🤩</button>
+            <button id="no-btn" onclick="shrinkNo()" class="choice-btn secondary-btn">Hayır 🙄</button>
+            <button onclick="startCountdown()" class="choice-btn primary-btn" id="yes-btn">Evet! 🤩</button>
         </div>
     </div>
 
+    <!-- 3. Adım: 10'dan Geri Sayım Ekranı -->
     <div id="step-countdown" class="screen hidden">
         <h2>Sürpriz Hazırlanıyor... ⏳</h2>
         <div id="countdown-val" class="countdown-number">10</div>
         <p class="sub-desc">Geri sayım bitiyor, sıkı dur!</p>
     </div>
 
+    <!-- 4. Adım: Spotify Playlist ve Kedi Fotoğraflı Kapak -->
     <div id="step-playlist" class="screen hidden">
         <div class="playlist-header-img-container">
             <img src="1000015564.jpg" alt="Playlist Kapağı" class="playlist-header-img">
@@ -46,10 +238,53 @@
 
         <p class="music-desc">İyi ki varsın kanka, nice mutlu senelere!</p>
         
-        <a href="Https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=R71BY3S-QamVvEM8JSp-cQ&utm_source=copy-link&pt=14c52dc9c4f54076abe5db5a3f6cb069" target="_blank" class="spotify-link">Spotify'da Dinle 🎸</a>
+        <a href="https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=R71BY3S-QamVvEM8JSp-cQ&utm_source=copy-link&pt=14c52dc9c4f54076abe5db5a3f6cb069" target="_blank" class="spotify-link">Spotify'da Dinle 🎸</a>
     </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+    function goNext() {
+        document.getElementById('step-intro').classList.add('hidden');
+        document.getElementById('step-sure').classList.remove('hidden');
+    }
+
+    let yesScale = 1;
+    let noScale = 1;
+
+    function shrinkNo() {
+        yesScale += 0.25;
+        noScale -= 0.2;
+        
+        document.getElementById('yes-btn').style.transform = `scale(${yesScale})`;
+        
+        const noBtn = document.getElementById('no-btn');
+        if (noScale > 0.2) {
+            noBtn.style.transform = `scale(${noScale})`;
+        } else {
+            noBtn.style.display = 'none';
+        }
+    }
+
+    function startCountdown() {
+        document.getElementById('step-sure').classList.add('hidden');
+        document.getElementById('step-countdown').classList.remove('hidden');
+
+        let count = 10;
+        const valDiv = document.getElementById('countdown-val');
+        valDiv.innerText = count;
+
+        let timer = setInterval(() => {
+            count--;
+            valDiv.innerText = count;
+
+            if (count <= 0) {
+                clearInterval(timer);
+                document.getElementById('step-countdown').classList.add('hidden');
+                document.getElementById('step-playlist').classList.remove('hidden');
+            }
+        }, 1000);
+    }
+</script>
+
 </body>
 </html>
