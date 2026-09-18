@@ -238,11 +238,6 @@ input[type=range] {
     box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
 }
 
-.videos-wrapper { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
-.video-card { background: rgba(0, 0, 0, 0.4); border-radius: 12px; padding: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
-.video-title { color: #fbcfe8; font-size: 0.85rem; margin-bottom: 8px; }
-.video-card video { width: 100%; border-radius: 8px; max-height: 280px; object-fit: contain; }
-
 .back-btn { 
     background: transparent; 
     color: #94a3b8; 
@@ -253,4 +248,75 @@ input[type=range] {
     margin-top: 20px; 
     font-size: 0.85rem; 
     width: 100%;
+}
+
+/* Kart Destesi (Stack) Stilleri */
+.card-stack-container {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-stack {
+    position: relative;
+    width: 100%;
+    height: 310px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stack-card {
+    position: absolute;
+    width: 92%;
+    max-width: 320px;
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 16px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease, z-index 0.4s;
+    user-select: none;
+}
+
+.stack-card.active {
+    z-index: 10;
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+.stack-card:not(.active) {
+    z-index: 5;
+    transform: translateY(16px) scale(0.92) rotate(-4deg);
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.stack-card video {
+    width: 100%;
+    height: 220px;
+    border-radius: 10px;
+    object-fit: contain;
+    background: #000;
+}
+
+.stack-nav-btn {
+    margin-top: 15px;
+    background: rgba(244, 63, 94, 0.2);
+    border: 1px solid #f43f5e;
+    color: #f43f5e;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.stack-nav-btn:active {
+    transform: scale(0.95);
+    background: rgba(244, 63, 94, 0.4);
 }

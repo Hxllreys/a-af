@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusText = document.getElementById('status-text');
     const nextBtn = document.getElementById('next-btn');
 
+    // Slider üzerindeki dinamik mesajlar
     const messages = [
         { limit: 10, text: "Hiç hatrım yok mu?" },
         { limit: 39, text: "Hiç sevmedin mi?" },
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { limit: 100, text: "Bende seni özledim♥️" }
     ];
 
+    // Slider değer güncelleyici
     function updateSliderValue() {
         const val = parseInt(slider.value, 10) || 0;
         percentVal.innerText = '%' + val;
@@ -25,28 +27,67 @@ document.addEventListener("DOMContentLoaded", function () {
         nextBtn.disabled = (val !== 100);
     }
 
-    slider.addEventListener('input', updateSliderValue);
-    slider.addEventListener('change', updateSliderValue);
-    slider.addEventListener('touchmove', updateSliderValue);
-    
-    updateSliderValue();
+    if (slider) {
+        slider.addEventListener('input', updateSliderValue);
+        slider.addEventListener('change', updateSliderValue);
+        slider.addEventListener('touchmove', updateSliderValue);
+        updateSliderValue();
+    }
 
-    nextBtn.addEventListener('click', function () {
-        document.getElementById('step-1').classList.add('hidden');
-        runHeartAnimation(() => {
-            document.getElementById('step-2').classList.remove('hidden');
+    // Slider Devam Et Butonu
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function () {
+            document.getElementById('step-1').classList.add('hidden');
+            runHeartAnimation(() => {
+                document.getElementById('step-2').classList.remove('hidden');
+            });
         });
-    });
+    }
 
-    document.getElementById('box-1').addEventListener('click', () => triggerBoxOpen('note-box'));
-    document.getElementById('box-2').addEventListener('click', () => triggerBoxOpen('music-box'));
-    document.getElementById('box-3').addEventListener('click', () => triggerBoxOpen('video-box'));
+    // Hediye Kutusu Tıklama Olayları
+    const box1 = document.getElementById('box-1');
+    const box2 = document.getElementById('box-2');
+    const box3 = document.getElementById('box-3');
 
+    if (box1) box1.addEventListener('click', () => triggerBoxOpen('note-box'));
+    if (box2) box2.addEventListener('click', () => triggerBoxOpen('music-box'));
+    if (box3) box3.addEventListener('click', () => triggerBoxOpen('video-box'));
+
+    // Geri Dön Butonları
     document.querySelectorAll('.back-btn').forEach(btn => {
         btn.addEventListener('click', backToGifts);
     });
+
+    // Video Kart Deste (Stack) Mantığı
+    const cards = document.querySelectorAll('.stack-card');
+    const nextCardBtn = document.getElementById('nextCardBtn');
+    let currentCardIndex = 0;
+
+    function updateStack() {
+        cards.forEach((card, idx) => {
+            // Arka plandaki videoları otomatik durdur
+            const video = card.querySelector('video');
+            if (video && idx !== currentCardIndex) {
+                video.pause();
+            }
+
+            if (idx === currentCardIndex) {
+                card.className = 'stack-card active';
+            } else {
+                card.className = 'stack-card';
+            }
+        });
+    }
+
+    if (nextCardBtn) {
+        nextCardBtn.addEventListener('click', () => {
+            currentCardIndex = (currentCardIndex + 1) % cards.length;
+            updateStack();
+        });
+    }
 });
 
+// Kutuları Kalp Çizim Animasyonuyla Açma
 function triggerBoxOpen(boxId) {
     document.getElementById('step-2').classList.add('hidden');
     runHeartAnimation(() => {
@@ -67,6 +108,9 @@ function backToGifts() {
     document.getElementById('music-box').classList.add('hidden');
     document.getElementById('video-box').classList.add('hidden');
     document.getElementById('step-2').classList.remove('hidden');
+    
+    // Videolardan çıkılınca tüm videoları durdur
+    document.querySelectorAll('video').forEach(v => v.pause());
 }
 
 // Python/Turtle Mantığında Hızlı Matematiksel Kalp Çizim Fonksiyonu
@@ -80,11 +124,10 @@ function runHeartAnimation(onComplete) {
     loaderOverlay.classList.remove('hidden');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let t = 0;
-    const totalSteps = 150; // Hızlı ve akıcı çizim için step sayısı
-    const scale = 7;
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2 - 10;
+    let totalSteps = 150; // Hızlı çizim için nokta sayısı
+    let scale = 7;
+    let cx = canvas.width / 2;
+    let cy = canvas.height / 2 - 10;
 
     let points = [];
 
@@ -123,7 +166,7 @@ function runHeartAnimation(onComplete) {
             loadingBar.style.width = progress + '%';
             loadingText.innerText = 'Yükleniyor %' + progress;
 
-            // Hızlı animasyon süresi (her karede 2 adım çizer)
+            // Hızlı animasyon döngüsü
             setTimeout(animate, 6);
         } else {
             setTimeout(() => {
