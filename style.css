@@ -5,7 +5,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #1a0826, #3a0033);
+    background-color: #0f0f0f;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
@@ -16,35 +16,30 @@ body {
     padding: 20px 10px;
 }
 
-/* Orijinal Mor-Pembe Kart Tasarımı */
 .card {
     width: 100%;
     max-width: 360px;
     margin: 12px auto;
-    background: rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(255, 105, 180, 0.4);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 8px 32px 0 rgba(255, 20, 147, 0.25);
+    background: #1a1a1a;
+    border: 2px solid #e91e63;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(233, 30, 99, 0.2);
     text-align: center;
     overflow: hidden;
 }
 
 h1, h2, h3 {
-    color: #ff69b4;
-    margin-bottom: 12px;
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+    color: #ff4081;
+    margin-bottom: 10px;
 }
 
-/* Slider Tasarımı */
 input[type="range"] {
     width: 100%;
     margin: 15px 0;
-    accent-color: #ff1493;
+    accent-color: #e91e63;
 }
 
-/* Canvas / Kalp Çizim Alanı */
 canvas {
     display: block;
     margin: 10px auto;
@@ -54,7 +49,7 @@ canvas {
 
 .progress-bar-container {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #333;
     border-radius: 10px;
     overflow: hidden;
     margin: 10px 0;
@@ -62,24 +57,21 @@ canvas {
 
 .progress-bar {
     width: 0%;
-    height: 10px;
-    background: linear-gradient(90deg, #ff69b4, #ff1493);
+    height: 12px;
+    background-color: #e91e63;
     transition: width 0.1s linear;
 }
 
-/* Not Kutusu */
 .note-box {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 14px;
-    border-radius: 12px;
-    border-left: 4px solid #ff69b4;
+    background: #252525;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #e91e63;
     font-style: italic;
     font-size: 14px;
     line-height: 1.5;
-    color: #ffe4e1;
 }
 
-/* Plak Stili */
 .vinyl-container {
     display: flex;
     justify-content: center;
@@ -91,17 +83,16 @@ canvas {
     height: 130px;
     background: radial-gradient(circle, #111 30%, #333 31%, #111 32%, #111 60%, #222 61%);
     border-radius: 50%;
-    border: 3px solid #ff69b4;
+    border: 3px solid #ff4081;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
 }
 
 .vinyl-center {
     width: 36px;
     height: 36px;
-    background: #ff1493;
+    background: #e91e63;
     border-radius: 50%;
     border: 2px solid #fff;
 }
@@ -114,7 +105,6 @@ canvas {
     100% { transform: rotate(360deg); }
 }
 
-/* Video Taşmalarını Önleyen Düzeltme */
 .video-container {
     width: 100%;
     overflow: hidden;
@@ -126,22 +116,20 @@ video {
     height: auto !important;
     max-height: 400px;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 10px;
     outline: none;
     display: block;
     margin: 0 auto;
 }
 
-/* Butonlar */
 .btn {
-    background: linear-gradient(45deg, #ff1493, #ff69b4);
+    background: #e91e63;
     color: #fff;
     border: none;
-    padding: 12px 20px;
-    border-radius: 25px;
+    padding: 10px 18px;
+    border-radius: 20px;
     cursor: pointer;
     font-weight: bold;
     width: 100%;
     margin-top: 10px;
-    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
 }

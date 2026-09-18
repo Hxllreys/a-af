@@ -24,7 +24,7 @@ function startHeartAnimation() {
     let t = 0;
 
     ctx.translate(150, 150);
-    ctx.strokeStyle = "#ff69b4";
+    ctx.strokeStyle = "#ff4081";
     ctx.lineWidth = 2;
 
     const interval = setInterval(() => {
