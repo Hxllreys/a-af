@@ -2,206 +2,9 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sana Bir Mesajım Var...</title>
-    <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        
-        body { 
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%); 
-            color: #f1f5f9; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 20px 15px; 
-            overflow-y: auto;
-            transition: background 0.8s ease;
-        }
-
-        body.pink-theme {
-            background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be123c 100%) !important;
-        }
-        
-        .card { 
-            background: rgba(30, 41, 59, 0.85); 
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 30px 22px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
-            width: 100%; 
-            max-width: 440px; 
-            text-align: center; 
-            margin: auto;
-            transition: background 0.8s ease, border-color 0.8s ease;
-        }
-
-        body.pink-theme .card {
-            background: rgba(136, 19, 55, 0.85);
-            border: 1px solid rgba(251, 113, 133, 0.3);
-        }
-        
-        h2 { color: #f8fafc; margin-bottom: 20px; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.5px; }
-        
-        .slider-container { margin: 25px 0; }
-        input[type=range] { width: 100%; accent-color: #93c5fd; margin-bottom: 15px; cursor: pointer; height: 8px; }
-        .status-text { font-size: 1.05rem; font-weight: 500; color: #cbd5e1; min-height: 48px; display: flex; align-items: center; justify-content: center; font-style: italic; }
-        .percent { font-size: 2.2rem; font-weight: bold; color: #93c5fd; margin-bottom: 10px; text-shadow: 0 0 10px rgba(147, 197, 253, 0.3); }
-        
-        .main-btn { 
-            background: linear-gradient(135deg, #6366f1, #4f46e5); 
-            color: white; 
-            border: none; 
-            padding: 14px 28px; 
-            border-radius: 10px; 
-            font-size: 1rem; 
-            font-weight: 600;
-            cursor: pointer; 
-            transition: 0.3s; 
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-        .main-btn:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-2px); }
-        .main-btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; box-shadow: none; transform: none; opacity: 0.6; }
-
-        .hidden { display: none !important; }
-
-        .boxes-container { display: flex; justify-content: center; margin-top: 20px; gap: 15px; flex-wrap: wrap; }
-        .gift-box-wrapper { cursor: pointer; transition: 0.3s; width: 100px; text-align: center; }
-        .gift-box-wrapper:hover { transform: translateY(-8px) scale(1.05); }
-        
-        .gift-box {
-            position: relative;
-            width: 75px;
-            height: 68px;
-            background: #312e81; 
-            border-radius: 8px;
-            margin: 0 auto 10px auto;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .gift-box::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -4px;
-            width: 83px;
-            height: 16px;
-            background: #3730a3;
-            border-radius: 5px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-        }
-        .gift-box::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 31px;
-            width: 12px;
-            height: 78px;
-            background: #9f1239;
-        }
-        .ribbon-bow {
-            position: absolute;
-            top: -20px;
-            left: 23px;
-            width: 28px;
-            height: 14px;
-            background: #be123c;
-            border-radius: 10px;
-            z-index: 2;
-        }
-        .gift-title { font-weight: 500; color: #94a3b8; font-size: 0.85rem; }
-
-        .heart-canvas-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 5px 0;
-            transition: opacity 1s ease;
-            width: 100%;
-        }
-        #heartCanvas {
-            background: #000000;
-            border-radius: 16px;
-            box-shadow: 0 0 25px rgba(255, 182, 193, 0.25);
-            width: 100%;
-            max-width: 340px;
-            height: auto;
-        }
-
-        .journal-box { 
-            margin-top: 15px; 
-            padding: 25px 20px 25px 30px; 
-            border-radius: 8px; 
-            background: #fdfbf7; 
-            color: #2c3e50;
-            text-align: left; 
-            position: relative;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.3);
-            border-left: 3px solid #e74c3c;
-            background-image: linear-gradient(#e1e8ed 1px, transparent 1px);
-            background-size: 100% 28px;
-            line-height: 28px;
-            max-height: 55vh;
-            overflow-y: auto;
-            animation: fadeIn 1s forwards;
-        }
-        .journal-header { font-size: 0.85rem; color: #7f8c8d; font-style: italic; margin-bottom: 8px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 4px; }
-        .journal-title { font-family: 'Georgia', serif; font-size: 1.2rem; color: #1a252f; margin-bottom: 10px; font-weight: bold; }
-        .journal-content { font-family: 'Georgia', serif; font-size: 0.95rem; color: #34495e; white-space: pre-line; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .playlist-header-img { width: 170px; height: 170px; border-radius: 16px; object-fit: cover; margin: 0 auto 15px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.6); display: block; }
-        .playlist-name { font-size: 1.35rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px; }
-        .playlist-sub { font-size: 1rem; color: #94a3b8; margin-bottom: 15px; }
-
-        .vinyl-container { position: relative; width: 140px; height: 140px; margin: 15px auto; display: flex; align-items: center; justify-content: center; }
-        .record { width: 140px; height: 140px; background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); border-radius: 50%; position: absolute; box-shadow: 0 6px 20px rgba(0,0,0,0.7); animation: spin 7s linear infinite; }
-        .record-center { width: 40px; height: 40px; border-radius: 50%; position: absolute; z-index: 2; }
-        .record::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; background: #000; border-radius: 50%; z-index: 3; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        #ecgCanvas {
-            background: #000;
-            border-radius: 16px;
-            box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
-            width: 100%;
-            max-width: 340px;
-            height: auto;
-            margin-bottom: 15px;
-        }
-        .videos-wrapper { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
-        .video-card { background: rgba(0, 0, 0, 0.4); border-radius: 12px; padding: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .video-card video { width: 100%; border-radius: 8px; max-height: 250px; }
-
-        .back-btn { 
-            background: transparent; 
-            color: #94a3b8; 
-            border: 1px solid #475569; 
-            padding: 8px 18px; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            margin-top: 15px; 
-            font-size: 0.85rem; 
-            transition: 0.2s;
-        }
-        .back-btn:hover { background: #334155; color: #f8fafc; }
-
-        .spotify-link { 
-            display: inline-block; 
-            background: #1DB954; 
-            color: white; 
-            text-decoration: none; 
-            padding: 12px 24px; 
-            border-radius: 25px; 
-            font-weight: 600; 
-            margin-top: 12px; 
-            transition: 0.2s; 
-            box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -209,32 +12,34 @@
     <div id="step-1">
         <h2>Beni ne kadar özledin? 💭</h2>
         <div class="percent" id="percent-val">%0</div>
+        
         <div class="slider-container">
             <input type="range" id="miss-slider" min="0" max="100" value="0">
         </div>
+        
         <div class="status-text" id="status-text">Kaydır bakalım...</div>
         <br>
-        <button id="next-btn" class="main-btn" disabled onclick="showGiftSelection()">Devam Et</button>
+        <button id="next-btn" class="main-btn" disabled>Devam Et</button>
     </div>
 
     <div id="step-2" class="hidden">
         <h2>Sürprizlerin Hazır 🎁</h2>
-        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Açmak istediğin kutuya tıkla:</p>
+        <p class="sub-desc">Açmak istediğin kutuya tıkla:</p>
         
         <div class="boxes-container">
-            <div class="gift-box-wrapper" onclick="openBox('note-box')">
+            <div class="gift-box-wrapper" id="box-1">
                 <div class="gift-box"><div class="ribbon-bow"></div></div>
                 <div class="gift-title">1. Kutu</div>
             </div>
             
-            <div class="gift-box-wrapper" onclick="openBox('music-box')">
+            <div class="gift-box-wrapper" id="box-2">
                 <div class="gift-box"><div class="ribbon-bow"></div></div>
                 <div class="gift-title">2. Kutu</div>
             </div>
 
-            <div class="gift-box-wrapper" onclick="openBox('video-box')">
-                <div class="gift-box" style="background: #831843;"><div class="ribbon-bow" style="background: #f43f5e;"></div></div>
-                <div class="gift-title" style="color: #f43f5e; font-weight: bold;">3. Kutu ✨</div>
+            <div class="gift-box-wrapper" id="box-3">
+                <div class="gift-box pink-box"><div class="ribbon-bow pink-bow"></div></div>
+                <div class="gift-title pink-title">3. Kutu ✨</div>
             </div>
         </div>
     </div>
@@ -242,18 +47,18 @@
     <div id="note-box" class="hidden">
         <div id="heart-anim-wrapper" class="heart-canvas-container">
             <canvas id="heartCanvas" width="340" height="340"></canvas>
-            <p style="color: #ffb6c1; font-size: 0.85rem; margin-top: 12px; font-style: italic;">Sana özel bir şey çiziliyor...</p>
+            <p class="heart-sub">Sana özel bir şey çiziliyor...</p>
         </div>
 
         <div id="journal-wrapper" class="hidden">
             <div class="journal-box">
                 <div class="journal-header">Nice mutlu senelere... 📖</div>
                 <div class="journal-title">Sana Özel Bir Not</div>
-                <div class="journal-content" id="note-text">
-Öncelikle iyiki doğdun ilk kez birine not yazdığım için yazım hataları falan olursa ki olacaktır muhtemelen lütfen kusura bakma kuluz bizde hata yaparız ve yazdıklarımı çok fazla kişiye göstermezsen sevinirim benimde bi gururum kalsın lütfen :) bu notu yazmak için uzun zamandır cesaretimi toplamaya çalışıyorum ki sana buraya yazdıklarımı gerçekte söylemeye cesaretim yok gözlerine bakmaya bile kıyamıyordum belkide bu yüzden sevilmemiş gibi hissettin öncelikle seni üzdüysem kırdıysam senden çok özür dilerim ben hislerimi içten yaşayan dışa vurmayı beceremeyen bir insanım galiba en azindan birileri öyle söyledi sınıf olaylarında vs çok haklısın tek kelime etme hakkım yok ve kullanılmış gibi hissetmende çok normal çünkü her şey çok kısa sürede gelişti tabii ben böyle olmasını istemezdim farkında bile değilsin belki sana bunu göndereceğimi bile tahmin edemezsin belki ne anlatıyor bu Atasını siktigimde diyebilirsin belki engellersin hepsini anlarım seçim senindir bunu sana bu tarihte yazmam ne kadar doğru bilmiyorum ama sana aşığım ve kendimi tutamıyorum ve artık seni rahatsız etmemek adına sana yazmıyorum yanlış olmasın ilk adımı atarsan her zaman dönüş alabileceğini bilmeni satirda bilmeni isterim ve seni her halinle sevecegim vaktini verip bunu okuduysan belki hala vardır içinde bişeyler bilemem ben her seye ragmen ikimize bir sans daha vermek istiyorum istersen her sey en bastan baslasın istersen kaldigimiz yerden hicbisey olmamis gibi devam edelim sen ol yeter seni geceleri düşlemekten vazgeçemedim beynim istemesede kalbim kendini ele verdi senin de kendince muhtemelen utanma ice kapanık olma gibi sorunlarin vardı muhtemelen hepsini asalim ve yuzyuze sorunlarimizi yavas yavas adim adim halledebilecegimizi dusunuyorum kendi numaramdan yazacak yüzü meki bulamam bunu anlarsan çok sevinirim egerki beni istemezsen onuda anlarım mesajını aldım demen yeterli yinelemek istedim aramizda kalırsa cok iyi olur tekrardan mutlu yıllar dilerim kendine iyi bak görüşmek üzere
+                <div class="journal-content">
+Öncelikle iyiki doğdun ilk kez birine not yazdığım için yazım hataları falan olursa ki olacaktır muhtemelen lütfen kusura bakma kuluz bizde hata yaparız ve yazdıklarımı çok fazla kişiye göstermezsen sevinirim benimde bi gururum kalsın lütfen :) bu notu yazmak için uzun zamandır cesaretimi toplamaya çalışıyorum ki sana buraya yazdıklarımı gerçekte söylemeye cesaretim yok gözlerine bakmaya bile kıyamıyordum belkide bu yüzden sevilmemiş gibi hissettin öncelikle seni üzdüysem kırdıysam senden çok özür dilerim ben hislerimi içten yaşayan dışa vurmayı beceremeyen bir insanım galiba en azindan birileri öyle söyledi sınıf olaylarında vs çok haklısın tek kelime etme hakkım yok ve kullanılmış gibi hissemtende çok normal çünkü her şey çok kısa sürede gelişti tabii ben böyle olmasını istemezdim farkında bile değilsin belki sana bunu göndereceğimi bile tahmin edemezsin belki ne anlatıyor bu Atasını siktigimde diyebilirsin belki engellersin hepsini anlarım seçim senindir bunu sana bu tarihte yazmam ne kadar doğru bilmiyorum ama sana aşığım ve kendimi tutamıyorum ve artık seni rahatsız etmemek adına sana yazmıyorum yanlış olmasın ilk adımı atarsan her zaman dönüş alabileceğini bilmeni satirda bilmeni isterim ve seni her halinle sevecegim vaktini verip bunu okuduysan belki hala vardır içinde bişeyler bilemem ben her seye ragmen ikimize bir sans daha vermek istiyorum istersen her sey en bastan baslasın istersen kaldigimiz yerden hicbisey olmamis gibi devam edelim sen ol yeter seni geceleri düşlemekten vazgeçemedim beynim istemesede kalbim kendini ele verdi senin de kendince muhtemelen utanma ice kapanık olma gibi sorunlarin vardı muhtemelen hepsini asalim ve yuzyuze sorunlarimizi yavas yavas adim adim halledebilecegimizi dusunuyorum kendi numaramdan yazacak yüzü meki bulamam bunu anlarsan çok sevinirim egerki beni istemezsen onuda anlarım mesajını aldım demen yeterli yinelemek istedim aramizda kalırsa cok iyi olur tekrardan mutlu yıllar dilerim kendine iyi bak görüşmek üzere
                 </div>
             </div>
-            <button class="back-btn" onclick="backToGifts()">← Hediyelere Dön</button>
+            <button class="back-btn">← Hediyelere Dön</button>
         </div>
     </div>
 
@@ -273,143 +78,43 @@
             
             <div class="vinyl-container">
                 <div class="record"></div>
-                <svg class="record-center" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="500" height="500" fill="#000000"/>
-                    <rect x="150" y="150" width="200" height="200" rx="45" fill="#80a0c0"/>
-                    <path d="M 230 205 L 305 205 C 325 205, 335 215, 335 230 C 335 242, 325 250, 310 250 L 310 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
-                    <polygon points="238,190 238,220 215,205" fill="#ffffff"/>
-                    <path d="M 270 295 L 195 295 C 175 295, 165 285, 165 270 C 165 258, 175 250, 190 250 L 190 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
-                    <polygon points="262,310 262,280 285,295" fill="#ffffff"/>
-                </svg>
+                <div class="record-center"></div>
             </div>
 
-            <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 5px;">Dinledikçe beni ve güzel anıları hatırlaman dileğiyle...</p>
+            <p class="music-desc">Dinledikçe beni ve güzel anıları hatırlaman dileğiyle...</p>
             <a href="https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=AnqR1sS6QVGr52_S6xjMTg&utm_source=copy-link&pt=f4f2c73820d464cc1d7662151de961e4" target="_blank" class="spotify-link">Spotify'da Dinle 🎧</a>
         </div>
-        <button class="back-btn" onclick="backToGifts()">← Hediyelere Dön</button>
+        <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
     <div id="video-box" class="hidden">
         <h2>YOU & ME ❤️</h2>
-        <p style="color: #fca5a5; font-size: 0.85rem; margin-bottom: 15px;">WRITTEN IN THE STARS</p>
+        <p class="pink-sub">WRITTEN IN THE STARS</p>
         
         <canvas id="ecgCanvas" width="340" height="240"></canvas>
 
         <div class="videos-wrapper">
             <div class="video-card">
-                <p style="color: #fbcfe8; font-size: 0.85rem; margin-bottom: 8px;">1. Video 🎬</p>
-                <video controls style="width:100%; border-radius:8px;">
+                <p class="video-title">1. Video 🎬</p>
+                <video controls playsinline>
                     <source src="video1.mp4" type="video/mp4">
                     Tarayıcınız video oynatmayı desteklemiyor.
                 </video>
             </div>
 
             <div class="video-card">
-                <p style="color: #fbcfe8; font-size: 0.85rem; margin-bottom: 8px;">2. Video 🎬</p>
-                <video controls style="width:100%; border-radius:8px;">
+                <p class="video-title">2. Video 🎬</p>
+                <video controls playsinline>
                     <source src="video2.mp4" type="video/mp4">
                     Tarayıcınız video oynatmayı desteklemiyor.
                 </video>
             </div>
         </div>
 
-        <button class="back-btn" onclick="backToGifts()">← Hediyelere Dön</button>
+        <button class="back-btn">← Hediyelere Dön</button>
     </div>
 </div>
 
-<script>
-    const messages = [
-        { limit: 10, text: "Hiç hatrım yok mu?" },
-        { limit: 39, text: "Hiç sevmedin mi?" },
-        { limit: 70, text: "Fena değil eski günler hatrına kalsın" },
-        { limit: 100, text: "Bende seni özledim♥️" }
-    ];
-
-    function updateVal(val) {
-        const numericVal = parseInt(val, 10) || 0;
-        document.getElementById('percent-val').innerText = '%' + numericVal;
-        const btn = document.getElementById('next-btn');
-        const status = document.getElementById('status-text');
-
-        for (let m of messages) {
-            if (numericVal <= m.limit) {
-                status.innerText = m.text;
-                break;
-            }
-        }
-
-        btn.disabled = (numericVal !== 100);
-    }
-
-    // Mobil dokunmatik desteği ve anlık güncellemeyi zorunlu kılan olay dinleyicisi
-    document.addEventListener("DOMContentLoaded", function() {
-        const slider = document.getElementById('miss-slider');
-        
-        ['input', 'change', 'touchmove', 'pointermove'].forEach(evtName => {
-            slider.addEventListener(evtName, function() {
-                updateVal(this.value);
-            });
-        });
-        
-        updateVal(slider.value);
-    });
-
-    function showGiftSelection() {
-        document.getElementById('step-1').classList.add('hidden');
-        document.getElementById('step-2').classList.remove('hidden');
-    }
-
-    function openBox(boxId) {
-        document.getElementById('step-2').classList.add('hidden');
-        document.getElementById(boxId).classList.remove('hidden');
-
-        if (boxId === 'note-box') {
-            startHeartAnimation();
-        } else if (boxId === 'video-box') {
-            document.body.classList.add('pink-theme');
-            startEcgHeart();
-        }
-    }
-
-    function backToGifts() {
-        document.body.classList.remove('pink-theme');
-        document.getElementById('note-box').classList.add('hidden');
-        document.getElementById('music-box').classList.add('hidden');
-        document.getElementById('video-box').classList.add('hidden');
-        document.getElementById('step-2').classList.remove('hidden');
-        
-        document.getElementById('heart-anim-wrapper').classList.remove('hidden');
-        document.getElementById('heart-anim-wrapper').style.opacity = '1';
-        document.getElementById('journal-wrapper').classList.add('hidden');
-    }
-
-    function startHeartAnimation() {
-        const wrapper = document.getElementById('heart-anim-wrapper');
-        const journal = document.getElementById('journal-wrapper');
-        const canvas = document.getElementById('heartCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        wrapper.classList.remove('hidden');
-        wrapper.style.opacity = '1';
-        journal.classList.add('hidden');
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "#ffb6c1";
-        ctx.font = "bold 6.5px Arial";
-        ctx.textAlign = "center";
-
-        let scaleIndex = 11;
-        let iIndex = 0;
-        const totalScales = 17;
-
-        function drawStep() {
-            if (scaleIndex < totalScales) {
-                let angle = iIndex * (Math.PI * 2) / 120;
-                let scaleFactor = scaleIndex * 7.5;
-                let x = 16 * Math.pow(Math.sin(angle), 3) * (scaleFactor / 16);
-                let y = (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle)) * (scaleFactor / 16);
-
-                let canvasX = (canvas.width / 2) + x;
-                let canvasY = (canvas.height / 2) - y + 10;
-
-                ctx.fillText("I love you",
+<script src="script.js"></script>
+</body>
+</html>
