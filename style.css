@@ -1,3 +1,4 @@
+/* Genel Sayfa Sıfırlama ve Düzen */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -16,6 +17,7 @@ body {
     padding: 20px 10px;
 }
 
+/* Kapsayıcı Kart Tasarımları */
 .card {
     width: 100%;
     max-width: 360px;
@@ -26,7 +28,7 @@ body {
     padding: 16px;
     box-shadow: 0 8px 24px rgba(233, 30, 99, 0.2);
     text-align: center;
-    overflow: hidden;
+    overflow: hidden; /* Taşmayı engeller */
 }
 
 h1, h2, h3 {
@@ -34,12 +36,14 @@ h1, h2, h3 {
     margin-bottom: 10px;
 }
 
+/* Slider Tasarımı */
 input[type="range"] {
     width: 100%;
     margin: 15px 0;
     accent-color: #e91e63;
 }
 
+/* Canvas / Kalp Çizim Alanı */
 canvas {
     display: block;
     margin: 10px auto;
@@ -62,6 +66,7 @@ canvas {
     transition: width 0.1s linear;
 }
 
+/* Not Mektubu Kutu Stili */
 .note-box {
     background: #252525;
     padding: 12px;
@@ -72,6 +77,7 @@ canvas {
     line-height: 1.5;
 }
 
+/* Plak Oyuncusu Stili */
 .vinyl-container {
     display: flex;
     justify-content: center;
@@ -105,6 +111,7 @@ canvas {
     100% { transform: rotate(360deg); }
 }
 
+/* Video Düzenlemeleri (Taşmayı Önleyen Alan) */
 .video-container {
     width: 100%;
     overflow: hidden;
@@ -122,6 +129,7 @@ video {
     margin: 0 auto;
 }
 
+/* Genel Buton Stili */
 .btn {
     background: #e91e63;
     color: #fff;

@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- Üst Slider Alanı -->
     <div class="card">
         <h1>Sürprizi Aç 🎁</h1>
         <p id="sliderText">Kaydırarak %100 yap!</p>
@@ -15,6 +16,7 @@
         <p><span id="demo">0</span>%</p>
     </div>
 
+    <!-- Kalp Çizim Animasyonu Alanı -->
     <div class="card" id="heartCard" style="display: none;">
         <canvas id="heartCanvas" width="300" height="300"></canvas>
         <div class="progress-bar-container">
@@ -23,8 +25,10 @@
         <p id="loadingText">%0 Yükleniyor...</p>
     </div>
 
+    <!-- Gizli İçerik Kutuları (Slider %100 Olunca Açılır) -->
     <div id="contentBoxes" style="display: none;">
         
+        <!-- 1. KUTU: Not Mektubu -->
         <div class="card">
             <h2>1. Not Mektubu ✉️</h2>
             <div class="note-box">
@@ -32,6 +36,7 @@
             </div>
         </div>
 
+        <!-- 2. KUTU: Müzik / Spotify Plak -->
         <div class="card">
             <h2>2. Müzik Kutusu 🎵</h2>
             <div class="vinyl-container">
@@ -43,11 +48,9 @@
             <button class="btn" onclick="togglePlay()">Müziği Çal / Durdur</button>
         </div>
 
+        <!-- 3. KUTU: Videolar -->
         <div class="card">
-            <h2>Şam ve Zey 🎬</h2>
-            <div class="note-box" style="margin-bottom: 15px; text-align: center; font-style: normal;">
-                <p>Şam ve Zey de çok iyi olabilirdi ama araya bazı insanlar ve sanal girdi, hiçbir zaman gerçeğe taşınmadı. Biz de sanaldan taşıp bize karşı olan ucubelere inat birlikte olabiliriz...</p>
-            </div>
+            <h2>3. Anılarımız 🎬</h2>
             <div class="video-container">
                 <h3>1. Video 🎥</h3>
                 <video controls preload="metadata">
