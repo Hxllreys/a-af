@@ -7,7 +7,6 @@
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
         
-        /* Arka plan: Derin Gece Mavisi */
         body { 
             background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%); 
             color: #f1f5f9; 
@@ -20,12 +19,10 @@
             transition: background 0.8s ease;
         }
 
-        /* 3. Kutu Pembe Teması */
         body.pink-theme {
             background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be123c 100%) !important;
         }
         
-        /* Kart */
         .card { 
             background: rgba(30, 41, 59, 0.85); 
             backdrop-filter: blur(12px);
@@ -47,13 +44,11 @@
         
         h2 { color: #f8fafc; margin-bottom: 20px; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.5px; }
         
-        /* Slider Alanı */
         .slider-container { margin: 25px 0; }
-        input[type=range] { width: 100%; accent-color: #93c5fd; margin-bottom: 15px; cursor: pointer; }
+        input[type=range] { width: 100%; accent-color: #93c5fd; margin-bottom: 15px; cursor: pointer; height: 8px; }
         .status-text { font-size: 1.05rem; font-weight: 500; color: #cbd5e1; min-height: 48px; display: flex; align-items: center; justify-content: center; font-style: italic; }
         .percent { font-size: 2.2rem; font-weight: bold; color: #93c5fd; margin-bottom: 10px; text-shadow: 0 0 10px rgba(147, 197, 253, 0.3); }
         
-        /* Butonlar */
         .main-btn { 
             background: linear-gradient(135deg, #6366f1, #4f46e5); 
             color: white; 
@@ -67,16 +62,14 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
         .main-btn:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-2px); }
-        .main-btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; box-shadow: none; transform: none; }
+        .main-btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; box-shadow: none; transform: none; opacity: 0.6; }
 
         .hidden { display: none !important; }
 
-        /* Hediye Kutuları Seçim Alanı (3 KUTU) */
         .boxes-container { display: flex; justify-content: center; margin-top: 20px; gap: 15px; flex-wrap: wrap; }
         .gift-box-wrapper { cursor: pointer; transition: 0.3s; width: 100px; text-align: center; }
         .gift-box-wrapper:hover { transform: translateY(-8px) scale(1.05); }
         
-        /* Hediye Kutusu Görseli */
         .gift-box {
             position: relative;
             width: 75px;
@@ -119,7 +112,6 @@
         }
         .gift-title { font-weight: 500; color: #94a3b8; font-size: 0.85rem; }
 
-        /* PYTHON TURTLE KALP ANİMASYON ALANI (1. KUTU) */
         .heart-canvas-container {
             display: flex;
             flex-direction: column;
@@ -138,7 +130,6 @@
             height: auto;
         }
 
-        /* GÜNLÜK NOT SAYFASI TASARIMI */
         .journal-box { 
             margin-top: 15px; 
             padding: 25px 20px 25px 30px; 
@@ -162,19 +153,16 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* SPOTIFY PLAYLIST (2. KUTU) */
         .playlist-header-img { width: 170px; height: 170px; border-radius: 16px; object-fit: cover; margin: 0 auto 15px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.6); display: block; }
         .playlist-name { font-size: 1.35rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px; }
         .playlist-sub { font-size: 1rem; color: #94a3b8; margin-bottom: 15px; }
 
-        /* DÖNEN PLAK */
         .vinyl-container { position: relative; width: 140px; height: 140px; margin: 15px auto; display: flex; align-items: center; justify-content: center; }
         .record { width: 140px; height: 140px; background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); border-radius: 50%; position: absolute; box-shadow: 0 6px 20px rgba(0,0,0,0.7); animation: spin 7s linear infinite; }
         .record-center { width: 40px; height: 40px; border-radius: 50%; position: absolute; z-index: 2; }
         .record::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; background: #000; border-radius: 50%; z-index: 3; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* 3. KUTU: IŞILTILI KALP VE VİDEOLAR */
         #ecgCanvas {
             background: #000;
             border-radius: 16px;
@@ -218,37 +206,32 @@
 <body>
 
 <div class="card">
-    <!-- 1. AŞAMA: ÖZLEM ÖLÇER (ORİJİNAL ÇALIŞAN MANTIK) -->
     <div id="step-1">
         <h2>Beni ne kadar özledin? 💭</h2>
         <div class="percent" id="percent-val">%0</div>
         <div class="slider-container">
-            <input type="range" id="miss-slider" min="0" max="100" value="0" oninput="updateVal(this.value)">
+            <input type="range" id="miss-slider" min="0" max="100" value="0">
         </div>
         <div class="status-text" id="status-text">Kaydır bakalım...</div>
         <br>
         <button id="next-btn" class="main-btn" disabled onclick="showGiftSelection()">Devam Et</button>
     </div>
 
-    <!-- 2. AŞAMA: HEDİYE KUTULARI SEÇİMİ (3 KUTU) -->
     <div id="step-2" class="hidden">
         <h2>Sürprizlerin Hazır 🎁</h2>
         <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Açmak istediğin kutuya tıkla:</p>
         
         <div class="boxes-container">
-            <!-- 1. KUTU -->
             <div class="gift-box-wrapper" onclick="openBox('note-box')">
                 <div class="gift-box"><div class="ribbon-bow"></div></div>
                 <div class="gift-title">1. Kutu</div>
             </div>
             
-            <!-- 2. KUTU -->
             <div class="gift-box-wrapper" onclick="openBox('music-box')">
                 <div class="gift-box"><div class="ribbon-bow"></div></div>
                 <div class="gift-title">2. Kutu</div>
             </div>
 
-            <!-- 3. KUTU -->
             <div class="gift-box-wrapper" onclick="openBox('video-box')">
                 <div class="gift-box" style="background: #831843;"><div class="ribbon-bow" style="background: #f43f5e;"></div></div>
                 <div class="gift-title" style="color: #f43f5e; font-weight: bold;">3. Kutu ✨</div>
@@ -256,7 +239,6 @@
         </div>
     </div>
 
-    <!-- HEDİYE 1: KALP ANİMASYONU VE GÜNLÜK NOTU -->
     <div id="note-box" class="hidden">
         <div id="heart-anim-wrapper" class="heart-canvas-container">
             <canvas id="heartCanvas" width="340" height="340"></canvas>
@@ -275,7 +257,6 @@
         </div>
     </div>
 
-    <!-- HEDİYE 2: SPOTIFY PLAYLIST & PLAK -->
     <div id="music-box" class="hidden">
         <div>
             <svg class="playlist-header-img" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -308,7 +289,6 @@
         <button class="back-btn" onclick="backToGifts()">← Hediyelere Dön</button>
     </div>
 
-    <!-- HEDİYE 3: PEMBE TEMA + IŞILTILI KALP + 2 ADET VİDEO -->
     <div id="video-box" class="hidden">
         <h2>YOU & ME ❤️</h2>
         <p style="color: #fca5a5; font-size: 0.85rem; margin-bottom: 15px;">WRITTEN IN THE STARS</p>
@@ -346,23 +326,33 @@
     ];
 
     function updateVal(val) {
-        document.getElementById('percent-val').innerText = '%' + val;
+        const numericVal = parseInt(val, 10) || 0;
+        document.getElementById('percent-val').innerText = '%' + numericVal;
         const btn = document.getElementById('next-btn');
         const status = document.getElementById('status-text');
 
         for (let m of messages) {
-            if (val <= m.limit) {
+            if (numericVal <= m.limit) {
                 status.innerText = m.text;
                 break;
             }
         }
 
-        if (val == 100) {
-            btn.disabled = false;
-        } else {
-            btn.disabled = true;
-        }
+        btn.disabled = (numericVal !== 100);
     }
+
+    // Mobil dokunmatik desteği ve anlık güncellemeyi zorunlu kılan olay dinleyicisi
+    document.addEventListener("DOMContentLoaded", function() {
+        const slider = document.getElementById('miss-slider');
+        
+        ['input', 'change', 'touchmove', 'pointermove'].forEach(evtName => {
+            slider.addEventListener(evtName, function() {
+                updateVal(this.value);
+            });
+        });
+        
+        updateVal(slider.value);
+    });
 
     function showGiftSelection() {
         document.getElementById('step-1').classList.add('hidden');
@@ -388,13 +378,11 @@
         document.getElementById('video-box').classList.add('hidden');
         document.getElementById('step-2').classList.remove('hidden');
         
-        // Canvas Sıfırla
         document.getElementById('heart-anim-wrapper').classList.remove('hidden');
         document.getElementById('heart-anim-wrapper').style.opacity = '1';
         document.getElementById('journal-wrapper').classList.add('hidden');
     }
 
-    /* 1. KUTU: YAVAŞ KALP ÇİZİMİ */
     function startHeartAnimation() {
         const wrapper = document.getElementById('heart-anim-wrapper');
         const journal = document.getElementById('journal-wrapper');
@@ -413,8 +401,15 @@
         let scaleIndex = 11;
         let iIndex = 0;
         const totalScales = 17;
-        const stepsPerFrame = 1;
 
         function drawStep() {
-            for (let s = 0; s < stepsPerFrame; s++) {
-                if (scal
+            if (scaleIndex < totalScales) {
+                let angle = iIndex * (Math.PI * 2) / 120;
+                let scaleFactor = scaleIndex * 7.5;
+                let x = 16 * Math.pow(Math.sin(angle), 3) * (scaleFactor / 16);
+                let y = (13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle)) * (scaleFactor / 16);
+
+                let canvasX = (canvas.width / 2) + x;
+                let canvasY = (canvas.height / 2) - y + 10;
+
+                ctx.fillText("I love you",
