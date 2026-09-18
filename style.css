@@ -70,63 +70,185 @@ input[type=range] { width: 100%; accent-color: #93c5fd; margin-bottom: 15px; cur
 
 .hidden { display: none !important; }
 
-/* Hediye Kutuları Seçim Alanı */
-.boxes-container { display: flex; justify-content: center; margin-top: 25px; gap: 15px; flex-wrap: wrap; }
-.gift-box-wrapper { cursor: pointer; transition: 0.3s; width: 100px; text-align: center; }
-.gift-box-wrapper:hover { transform: translateY(-8px) scale(1.05); }
+/* ---------------------------------------------------
+   3 BOYUTLU VE SÜSLÜ HEDİYE KUTULARI (YENİ TASARIM)
+--------------------------------------------------- */
+.boxes-container { 
+    display: flex; 
+    justify-content: center; 
+    margin-top: 35px; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
 
-/* Hediye Kutusu Görselleri */
+.gift-box-wrapper { 
+    cursor: pointer; 
+    text-align: center; 
+    width: 95px; 
+}
+
+.gift-title { 
+    font-weight: 600; 
+    color: #f8fafc; 
+    font-size: 0.95rem; 
+    margin-top: 15px; 
+    text-shadow: 0 2px 5px rgba(0,0,0,0.4); 
+    transition: 0.3s; 
+}
+
+.gift-box-wrapper:hover .gift-title { 
+    transform: scale(1.1); 
+    color: #ffb1c1; 
+}
+
+/* Kutuların Uçma Animasyonu (Yukarı aşağı süzülme) */
+@keyframes floatBox {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
 .gift-box {
     position: relative;
-    width: 80px;
-    height: 70px;
-    background: #312e81; 
-    border-radius: 8px;
-    margin: 0 auto 12px auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 85px;
+    height: 80px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease;
+    animation: floatBox 3.5s ease-in-out infinite;
 }
 
-.pink-box { background: #831843 !important; }
+/* Kutuların süzülme süreleri birbirinden farklı olsun ki doğal dursun */
+#box-1 .gift-box { animation-delay: 0s; }
+#box-2 .gift-box { animation-delay: 1.2s; }
+#box-3 .gift-box { animation-delay: 2.4s; }
 
-.gift-box::before {
-    content: '';
-    position: absolute;
-    top: -12px;
-    left: -5px;
-    width: 90px;
-    height: 18px;
-    background: #3730a3;
-    border-radius: 6px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+/* Kutunun üstüne gelince büyüsün ve kapak/kurdele hafifçe havaya kalksın */
+.gift-box-wrapper:hover .gift-box {
+    animation-play-state: paused;
+    transform: scale(1.15);
 }
 
-.pink-box::before { background: #9f1239 !important; }
+.gift-box-wrapper:hover .box-lid {
+    transform: translateY(-12px) rotateZ(-3deg) rotateX(10deg);
+}
 
-.gift-box::after {
+.gift-box-wrapper:hover .bow {
+    transform: translateX(-50%) translateY(-12px) rotateZ(-3deg) rotateX(10deg);
+}
+
+/* Kutu Gövdesi */
+.box-body {
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    width: 75px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+    border-radius: 0 0 12px 12px;
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.15), 0 12px 25px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-top: none;
+}
+
+/* Gövdedeki Dikey Kurdele */
+.box-body::after {
     content: '';
     position: absolute;
-    top: -12px;
-    left: 33px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 14px;
-    height: 82px;
-    background: #9f1239;
+    height: 100%;
+    background: linear-gradient(to right, #ffffff, #fdfbfb);
+    box-shadow: inset 0 0 5px rgba(212, 175, 55, 0.4), 0 0 6px rgba(0,0,0,0.15);
 }
 
-.ribbon-bow {
+/* Kutu Kapağı */
+.box-lid {
     position: absolute;
-    top: -24px;
-    left: 23px;
-    width: 34px;
-    height: 16px;
-    background: #be123c;
-    border-radius: 12px;
+    top: 10px;
+    left: 0;
+    width: 85px;
+    height: 22px;
+    background: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+    border-radius: 6px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.25), inset -2px -2px 6px rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.4);
     z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.pink-bow { background: #f43f5e !important; }
-.gift-title { font-weight: 500; color: #94a3b8; font-size: 0.85rem; }
-.pink-title { color: #f43f5e !important; font-weight: bold; }
+/* Kapaktaki Yatay Kurdele */
+.box-lid::before { 
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, #ffffff, #fdfbfb);
+    box-shadow: inset 0 0 4px rgba(212, 175, 55, 0.4);
+}
+
+/* Kapaktaki Dikey Kurdele */
+.box-lid::after { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 100%;
+    background: linear-gradient(to right, #ffffff, #fdfbfb);
+    box-shadow: inset 0 0 4px rgba(212, 175, 55, 0.4);
+}
+
+/* Üstteki Fiyonk (Kurdele Uçları) */
+.bow {
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 25px;
+    z-index: 3;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bow-left, .bow-right {
+    position: absolute;
+    top: 0;
+    width: 28px;
+    height: 18px;
+    background: radial-gradient(circle at center, #ffffff 0%, #f1f2f6 100%);
+    border-radius: 12px 12px 0 12px;
+    box-shadow: inset 0 0 6px rgba(212, 175, 55, 0.4), 0 4px 8px rgba(0,0,0,0.25);
+}
+
+.bow-left {
+    left: 2px;
+    transform: rotate(-22deg);
+}
+
+.bow-right {
+    right: 2px;
+    transform: rotate(22deg);
+    border-radius: 12px 12px 12px 0;
+}
+
+.bow-center {
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px rgba(212, 175, 55, 0.8), 0 3px 6px rgba(0,0,0,0.3);
+    z-index: 4;
+}
+/* --------------------------------------------------- */
 
 /* Kalp Yükleme Animasyon Alanı */
 .heart-canvas-container {

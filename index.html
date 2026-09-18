@@ -9,6 +9,7 @@
 <body>
 
 <div class="card">
+    <!-- Kalp Animasyonu / Yükleme Ekranı -->
     <div id="heart-anim-wrapper" class="heart-canvas-container hidden">
         <canvas id="heartCanvas" width="340" height="340"></canvas>
         <div class="loading-bar-container">
@@ -17,6 +18,7 @@
         <div id="loading-text" class="loading-text">Yükleniyor %0</div>
     </div>
 
+    <!-- 1. Adım: Slider -->
     <div id="step-1">
         <h2>Beni ne kadar özledin? 💭</h2>
         <div class="percent" id="percent-val">%0</div>
@@ -30,28 +32,57 @@
         <button id="next-btn" class="main-btn" disabled>Devam Et</button>
     </div>
 
+    <!-- 2. Adım: Hediye Kutuları Seçim Alanı (YENİ 3D KUTULAR) -->
     <div id="step-2" class="hidden">
         <h2>Sürprizlerin Hazır 🎁</h2>
         <p class="sub-desc">Açmak istediğin kutuya tıkla:</p>
         
         <div class="boxes-container">
+            <!-- 1. Kutu -->
             <div class="gift-box-wrapper" id="box-1">
-                <div class="gift-box"><div class="ribbon-bow"></div></div>
+                <div class="gift-box">
+                    <div class="bow">
+                        <div class="bow-left"></div>
+                        <div class="bow-right"></div>
+                        <div class="bow-center"></div>
+                    </div>
+                    <div class="box-lid"></div>
+                    <div class="box-body"></div>
+                </div>
                 <div class="gift-title">1. Kutu</div>
             </div>
             
+            <!-- 2. Kutu -->
             <div class="gift-box-wrapper" id="box-2">
-                <div class="gift-box"><div class="ribbon-bow"></div></div>
+                <div class="gift-box">
+                    <div class="bow">
+                        <div class="bow-left"></div>
+                        <div class="bow-right"></div>
+                        <div class="bow-center"></div>
+                    </div>
+                    <div class="box-lid"></div>
+                    <div class="box-body"></div>
+                </div>
                 <div class="gift-title">2. Kutu</div>
             </div>
 
+            <!-- 3. Kutu -->
             <div class="gift-box-wrapper" id="box-3">
-                <div class="gift-box pink-box"><div class="ribbon-bow pink-bow"></div></div>
-                <div class="gift-title pink-title">3. Kutu ✨</div>
+                <div class="gift-box">
+                    <div class="bow">
+                        <div class="bow-left"></div>
+                        <div class="bow-right"></div>
+                        <div class="bow-center"></div>
+                    </div>
+                    <div class="box-lid"></div>
+                    <div class="box-body"></div>
+                </div>
+                <div class="gift-title">3. Kutu ✨</div>
             </div>
         </div>
     </div>
 
+    <!-- Hediye 1: Not Kutusu -->
     <div id="note-box" class="hidden">
         <div class="journal-box">
             <div class="journal-header">Nice mutlu senelere... 📖</div>
@@ -63,6 +94,7 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
+    <!-- Hediye 2: Müzik Kutusu -->
     <div id="music-box" class="hidden">
         <div>
             <svg class="playlist-header-img" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -95,6 +127,7 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
+    <!-- Hediye 3: Video Kutusu -->
     <div id="video-box" class="hidden">
         <h2>Anılarımız 🎬</h2>
         
