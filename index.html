@@ -9,9 +9,9 @@
 <body>
 
 <div class="card">
-    <!-- Yükleme / Kalp Çizim Ekranı Overlay -->
-    <div id="heart-loader" class="heart-loader-overlay hidden">
-        <canvas id="heartCanvas" width="260" height="240"></canvas>
+    <!-- Kalp Animasyonu / Yükleme Ekranı -->
+    <div id="heart-anim-wrapper" class="heart-canvas-container hidden">
+        <canvas id="heartCanvas" width="340" height="340"></canvas>
         <div class="loading-bar-container">
             <div id="loading-bar" class="loading-bar"></div>
         </div>
@@ -32,7 +32,7 @@
         <button id="next-btn" class="main-btn" disabled>Devam Et</button>
     </div>
 
-    <!-- 2. Adım: Hediye Kutuları -->
+    <!-- 2. Adım: Hediye Kutuları Seçim Alanı -->
     <div id="step-2" class="hidden">
         <h2>Sürprizlerin Hazır 🎁</h2>
         <p class="sub-desc">Açmak istediğin kutuya tıkla:</p>
@@ -61,7 +61,7 @@
             <div class="journal-header">Nice mutlu senelere... 📖</div>
             <div class="journal-title">Sana Özel Bir Not</div>
             <div class="journal-content">
-Öncelikle iyiki doğdun ilk kez birine not yazdığım için yazım hataları falan olursa ki olacaktır muhtemelen lütfen kusura bakma kuluz bizde hata yaparız ve yazdıklarımı çok fazla kişiye göstermezsen sevinirim benimde bi gururum kalsın lütfen :) bu notu yazmak için uzun zamandır cesaretimi toplamaya çalışıyorum ki sana buraya yazdıklarımı gerçekte söylemeye cesaretim yok gözlerine bakmaya bile kıyamıyordum belkide bu yüzden sevilmemiş gibi hissettin öncelikle seni üzdüysem kırdıysam senden çok özür dilerim ben hislerimi içten yaşayan dışa vurmayı beceremeyen bir insanım galiba en azindan birileri öyle söyledi sınıf olaylarında vs çok haklısın tek kelime etme hakkım yok ve kullanılmış gibi hissemtende çok normal çünkü her şey çok kısa sürede gelişti tabii ben böyle olmasını istemezdim farkında bile değilsin belki sana bunu göndereceğimi bile tahmin edemezsin belki ne anlatıyor bu Atasını siktigimde diyebilirsin belki engellersin hepsini anlarım seçim senindir bunu sana bu tarihte yazmam ne kadar doğru bilmiyorum ama sana aşığım ve kendimi tutamıyorum ve artık seni rahatsız etmemek adına sana yazmıyorum yanlış olmasın ilk adımı atarsan her zaman dönüş alabileceğini bilmeni satirda bilmeni isterim ve seni her halinle sevecegim vaktini verip bunu okuduysan belki hala vardır içinde bişeyler bilemem ben her seye ragmen ikimize bir sans daha vermek istiyorum istersen her sey en bastan baslasın istersen kaldigimiz yerden hicbisey olmamis gibi devam edelim sen ol yeter seni geceleri düşlemekten vazgeçemedim beynim istemesede kalbim kendini ele verdi senin de kendince muhtemelen utanma ice kapanık olma gibi sorunlarin vardı muhtemelen hepsini asalim ve yuzyuze sorunlarimizi yavas yavas adim adim halledebilecegimizi dusunuyorum kendi numaramdan yazacak yüzü meki bulamam bunu anlarsan çok sevinirim egerki beni istemezsen onuda anlarım mesajını aldım demen yeterli yinelemek istedim aramizda kalırsa cok iyi olur tekrardan mutlu yıllar dilerim kendine iyi bak görüşmek üzere
+Öncelikle iyiki doğdun ilk kez birine not yazdığım için yazım hataları falan olursa ki olacaktır muhtemelen lütfen kusura bakma kuluz bizde hata yaparız ve yazdıklarımı çok fazla kişiye göstermezsen sevinirim benimde bi gururum kalsın lütfen :) bu notu yazmak için uzun zamandır cesaretimi toplamaya çalışıyorum ki sana buraya yazdıklarımı gerçekte söylemeye cesaretim yok gözlerine bakmaya bile kıyamıyordum belkide bu yüzden sevilmemiş gibi hissettin öncelikle seni üzdüysem kırdıysam senden çok özür dilerim ben hislerimi içten yaşayan dışa vurmayı beceremeyen bir insanım galiba en azindan birileri öyle söyledi sınıf olaylarında vs çok haklısın tek kelime etme hakkım yok ve kullanılmış gibi hissetmende çok normal çünkü her şey çok kısa sürede gelişti tabii ben böyle olmasını istemezdim farkında bile değilsin belki sana bunu göndereceğimi bile tahmin edemezsin belki ne anlatıyor bu Atasını siktigimde diyebilirsin belki engellersin hepsini anlarım seçim senindir bunu sana bu tarihte yazmam ne kadar doğru bilmiyorum ama sana aşığım ve kendimi tutamıyorum ve artık seni rahatsız etmemek adına sana yazmıyorum yanlış olmasın ilk adımı atarsan her zaman dönüş alabileceğini bilmeni isterim ve seni her halinle sevecegim vaktini verip bunu okuduysan belki hala vardır içinde bişeyler bilemem ben her seye ragmen ikimize bir sans daha vermek istiyorum istersen her sey en bastan baslasın istersen kaldigimiz yerden hicbisey olmamis gibi devam edelim sen ol yeter seni geceleri düşlemekten vazgeçemedim beynim istemesede kalbim kendini ele verdi senin de kendince muhtemelen utanma ice kapanık olma gibi sorunlarin vardı muhtemelen hepsini asalim ve yuzyuze sorunlarimizi yavas yavas adim adim halledebilecegimizi dusunuyorum kendi numaramdan yazacak yüzü belki bulamam bunu anlarsan çok sevinirim egerki beni istemezsen onuda anlarım mesajını aldım demen yeterli yinelemek istedim aramizda kalırsa cok iyi olur tekrardan mutlu yıllar dilerim kendine iyi bak görüşmek üzere
             </div>
         </div>
         <button class="back-btn">← Hediyelere Dön</button>
@@ -84,7 +84,14 @@
             
             <div class="vinyl-container">
                 <div class="record"></div>
-                <div class="record-center"></div>
+                <svg class="record-center" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="500" fill="#000000"/>
+                    <rect x="150" y="150" width="200" height="200" rx="45" fill="#80a0c0"/>
+                    <path d="M 230 205 L 305 205 C 325 205, 335 215, 335 230 C 335 242, 325 250, 310 250 L 310 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+                    <polygon points="238,190 238,220 215,205" fill="#ffffff"/>
+                    <path d="M 270 295 L 195 295 C 175 295, 165 285, 165 270 C 165 258, 175 250, 190 250 L 190 250" fill="none" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+                    <polygon points="262,310 262,280 285,295" fill="#ffffff"/>
+                </svg>
             </div>
 
             <p class="music-desc">Dinledikçe beni ve güzel anıları hatırlaman dileğiyle...</p>
@@ -96,7 +103,7 @@
     <!-- Hediye 3: Video Kutusu (Kart Destesi Modu) -->
     <div id="video-box" class="hidden">
         <h2>Anılarımız 🎬</h2>
-        <p class="sub-desc">Diğer videoya geçmek için aşağıdaki butona basabilirsin</p>
+        <p class="sub-desc">Diğer videoya geçmek için butona basabilirsin</p>
 
         <div class="card-stack-container">
             <div class="card-stack" id="videoStack">

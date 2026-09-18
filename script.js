@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusText = document.getElementById('status-text');
     const nextBtn = document.getElementById('next-btn');
 
-    // Slider üzerindeki dinamik mesajlar
     const messages = [
         { limit: 10, text: "Hiç hatrım yok mu?" },
         { limit: 39, text: "Hiç sevmedin mi?" },
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { limit: 100, text: "Bende seni özledim♥️" }
     ];
 
-    // Slider değer güncelleyici
     function updateSliderValue() {
         const val = parseInt(slider.value, 10) || 0;
         percentVal.innerText = '%' + val;
@@ -34,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         updateSliderValue();
     }
 
-    // Slider Devam Et Butonu
     if (nextBtn) {
         nextBtn.addEventListener('click', function () {
             document.getElementById('step-1').classList.add('hidden');
@@ -44,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Hediye Kutusu Tıklama Olayları
+    // Kutuların tıklama dinleyicileri
     const box1 = document.getElementById('box-1');
     const box2 = document.getElementById('box-2');
     const box3 = document.getElementById('box-3');
@@ -53,19 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if (box2) box2.addEventListener('click', () => triggerBoxOpen('music-box'));
     if (box3) box3.addEventListener('click', () => triggerBoxOpen('video-box'));
 
-    // Geri Dön Butonları
+    // Geri Dön butonları
     document.querySelectorAll('.back-btn').forEach(btn => {
         btn.addEventListener('click', backToGifts);
     });
 
-    // Video Kart Deste (Stack) Mantığı
+    // Video kart destesi mantığı
     const cards = document.querySelectorAll('.stack-card');
     const nextCardBtn = document.getElementById('nextCardBtn');
     let currentCardIndex = 0;
 
     function updateStack() {
         cards.forEach((card, idx) => {
-            // Arka plandaki videoları otomatik durdur
             const video = card.querySelector('video');
             if (video && idx !== currentCardIndex) {
                 video.pause();
@@ -87,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Kutuları Kalp Çizim Animasyonuyla Açma
 function triggerBoxOpen(boxId) {
     document.getElementById('step-2').classList.add('hidden');
     runHeartAnimation(() => {
@@ -109,29 +104,26 @@ function backToGifts() {
     document.getElementById('video-box').classList.add('hidden');
     document.getElementById('step-2').classList.remove('hidden');
     
-    // Videolardan çıkılınca tüm videoları durdur
     document.querySelectorAll('video').forEach(v => v.pause());
 }
 
-// Python/Turtle Mantığında Hızlı Matematiksel Kalp Çizim Fonksiyonu
+/* YÜKLEME BARLI HIZLI KALP ANİMASYONU */
 function runHeartAnimation(onComplete) {
-    const loaderOverlay = document.getElementById('heart-loader');
+    const wrapper = document.getElementById('heart-anim-wrapper');
     const canvas = document.getElementById('heartCanvas');
     const ctx = canvas.getContext('2d');
     const loadingBar = document.getElementById('loading-bar');
     const loadingText = document.getElementById('loading-text');
 
-    loaderOverlay.classList.remove('hidden');
+    wrapper.classList.remove('hidden');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    let totalSteps = 150; // Hızlı çizim için nokta sayısı
-    let scale = 7;
+    let totalSteps = 140;
+    let scale = 7.5;
     let cx = canvas.width / 2;
     let cy = canvas.height / 2 - 10;
-
     let points = [];
 
-    // Parametrik Kalp Denklemi: x = 16*sin^3(t), y = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)
     for (let i = 0; i <= totalSteps; i++) {
         let stepT = (i / totalSteps) * Math.PI * 2;
         let x = 16 * Math.pow(Math.sin(stepT), 3);
@@ -166,11 +158,10 @@ function runHeartAnimation(onComplete) {
             loadingBar.style.width = progress + '%';
             loadingText.innerText = 'Yükleniyor %' + progress;
 
-            // Hızlı animasyon döngüsü
             setTimeout(animate, 6);
         } else {
             setTimeout(() => {
-                loaderOverlay.classList.add('hidden');
+                wrapper.classList.add('hidden');
                 if (onComplete) onComplete();
             }, 200);
         }

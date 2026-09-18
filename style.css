@@ -1,8 +1,8 @@
-* {
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+* { 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0; 
+    padding: 0; 
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -26,17 +26,15 @@ body.pink-theme {
     position: relative;
     background: rgba(30, 41, 59, 0.85); 
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 30px 22px; 
-    border-radius: 24px; 
+    border-radius: 20px; 
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
     width: 100%; 
     max-width: 440px; 
     text-align: center; 
     margin: auto;
     transition: background 0.8s ease, border-color 0.8s ease;
-    min-height: 320px;
 }
 
 body.pink-theme .card {
@@ -44,17 +42,109 @@ body.pink-theme .card {
     border: 1px solid rgba(251, 113, 133, 0.3);
 }
 
-/* Kalp Yükleme Ekranı Stilleri */
-.heart-loader-overlay {
+h2 { color: #f8fafc; margin-bottom: 20px; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.5px; }
+.sub-desc { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; }
+
+/* Slider Alanı */
+.slider-container { margin: 25px 0; touch-action: none; }
+input[type=range] { width: 100%; accent-color: #93c5fd; margin-bottom: 15px; cursor: pointer; }
+.status-text { font-size: 1.05rem; font-weight: 500; color: #cbd5e1; min-height: 48px; display: flex; align-items: center; justify-content: center; font-style: italic; }
+.percent { font-size: 2.2rem; font-weight: bold; color: #93c5fd; margin-bottom: 10px; text-shadow: 0 0 10px rgba(147, 197, 253, 0.3); }
+
+/* Butonlar */
+.main-btn { 
+    background: linear-gradient(135deg, #6366f1, #4f46e5); 
+    color: white; 
+    border: none; 
+    padding: 14px 28px; 
+    border-radius: 10px; 
+    font-size: 1rem; 
+    font-weight: 600;
+    cursor: pointer; 
+    transition: 0.3s; 
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    width: 100%;
+}
+.main-btn:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-2px); }
+.main-btn:disabled { background: #334155; color: #64748b; cursor: not-allowed; box-shadow: none; transform: none; }
+
+.hidden { display: none !important; }
+
+/* Hediye Kutuları Seçim Alanı */
+.boxes-container { display: flex; justify-content: center; margin-top: 25px; gap: 15px; flex-wrap: wrap; }
+.gift-box-wrapper { cursor: pointer; transition: 0.3s; width: 100px; text-align: center; }
+.gift-box-wrapper:hover { transform: translateY(-8px) scale(1.05); }
+
+/* Hediye Kutusu Görselleri */
+.gift-box {
+    position: relative;
+    width: 80px;
+    height: 70px;
+    background: #312e81; 
+    border-radius: 8px;
+    margin: 0 auto 12px auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pink-box { background: #831843 !important; }
+
+.gift-box::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -5px;
+    width: 90px;
+    height: 18px;
+    background: #3730a3;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.pink-box::before { background: #9f1239 !important; }
+
+.gift-box::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 33px;
+    width: 14px;
+    height: 82px;
+    background: #9f1239;
+}
+
+.ribbon-bow {
+    position: absolute;
+    top: -24px;
+    left: 23px;
+    width: 34px;
+    height: 16px;
+    background: #be123c;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+.pink-bow { background: #f43f5e !important; }
+.gift-title { font-weight: 500; color: #94a3b8; font-size: 0.85rem; }
+.pink-title { color: #f43f5e !important; font-weight: bold; }
+
+/* Kalp Yükleme Animasyon Alanı */
+.heart-canvas-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 0;
+    padding: 10px 0;
+    width: 100%;
 }
 
 #heartCanvas {
-    background: transparent;
+    background: #000000;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(255, 182, 193, 0.25);
+    width: 100%;
+    max-width: 320px;
+    height: auto;
     margin-bottom: 15px;
 }
 
@@ -77,132 +167,22 @@ body.pink-theme .card {
 }
 
 .loading-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #f43f5e;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
-h2 { color: #f8fafc; margin-bottom: 10px; font-size: 1.4rem; font-weight: 600; }
-.sub-desc { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; }
-
-.slider-container { margin: 25px 0; touch-action: none; }
-input[type=range] { 
-    width: 100%; 
-    accent-color: #38bdf8; 
-    margin-bottom: 15px; 
-    cursor: pointer; 
-    height: 10px;
-    border-radius: 5px;
-}
-
-.status-text { 
-    font-size: 1.05rem; 
-    font-weight: 500; 
-    color: #cbd5e1; 
-    min-height: 48px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-style: italic; 
-}
-
-.percent { 
-    font-size: 2.4rem; 
-    font-weight: 800; 
-    color: #38bdf8; 
-    margin-bottom: 10px; 
-    text-shadow: 0 0 12px rgba(56, 189, 248, 0.4); 
-}
-
-.main-btn { 
-    background: linear-gradient(135deg, #6366f1, #4f46e5); 
-    color: white; 
-    border: none; 
-    padding: 14px 28px; 
-    border-radius: 12px; 
-    font-size: 1rem; 
-    font-weight: 600;
-    cursor: pointer; 
-    transition: 0.3s; 
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    width: 100%;
-}
-
-.main-btn:disabled { 
-    background: #334155; 
-    color: #64748b; 
-    cursor: not-allowed; 
-    box-shadow: none; 
-    opacity: 0.6; 
-}
-
-.hidden { display: none !important; }
-
-.boxes-container { display: flex; justify-content: center; margin-top: 20px; gap: 15px; flex-wrap: wrap; }
-.gift-box-wrapper { cursor: pointer; transition: 0.3s; width: 100px; text-align: center; }
-.gift-box-wrapper:active { transform: scale(0.95); }
-
-.gift-box {
-    position: relative;
-    width: 75px;
-    height: 68px;
-    background: #312e81; 
-    border-radius: 8px;
-    margin: 0 auto 10px auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.pink-box { background: #831843 !important; }
-
-.gift-box::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -4px;
-    width: 83px;
-    height: 16px;
-    background: #3730a3;
-    border-radius: 5px;
-}
-
-.pink-box::before { background: #9f1239 !important; }
-
-.gift-box::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 31px;
-    width: 12px;
-    height: 78px;
-    background: #9f1239;
-}
-
-.ribbon-bow {
-    position: absolute;
-    top: -20px;
-    left: 23px;
-    width: 28px;
-    height: 14px;
-    background: #be123c;
-    border-radius: 10px;
-    z-index: 2;
-}
-
-.pink-bow { background: #f43f5e !important; }
-.gift-title { font-weight: 500; color: #94a3b8; font-size: 0.85rem; }
-.pink-title { color: #f43f5e !important; font-weight: bold; }
-
+/* Günlük Not Sayfası Tasarımı */
 .journal-box { 
     margin-top: 15px; 
-    padding: 22px 18px 22px 26px; 
-    border-radius: 12px; 
+    padding: 25px 20px 25px 30px; 
+    border-radius: 8px; 
     background: #fdfbf7; 
     color: #2c3e50;
     text-align: left; 
+    position: relative;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.3);
-    border-left: 4px solid #e74c3c;
+    border-left: 3px solid #e74c3c;
     background-image: linear-gradient(#e1e8ed 1px, transparent 1px);
     background-size: 100% 28px;
     line-height: 28px;
@@ -210,33 +190,74 @@ input[type=range] {
     overflow-y: auto;
 }
 
-.journal-header { font-size: 0.85rem; color: #7f8c8d; font-style: italic; margin-bottom: 8px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 4px; }
-.journal-title { font-family: 'Georgia', serif; font-size: 1.2rem; color: #1a252f; margin-bottom: 10px; font-weight: bold; }
-.journal-content { font-family: 'Georgia', serif; font-size: 0.95rem; color: #34495e; white-space: pre-line; }
+.journal-header {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed #cbd5e1;
+    padding-bottom: 4px;
+}
 
-.playlist-header-img { width: 150px; height: 150px; border-radius: 16px; margin: 0 auto 15px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.6); display: block; }
-.playlist-name { font-size: 1.3rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px; }
+.journal-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    color: #1a252f;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.journal-content { 
+    font-family: 'Georgia', serif; 
+    font-size: 0.95rem; 
+    color: #34495e; 
+    white-space: pre-line; 
+}
+
+/* Spotify & Plak Tasarımı */
+.playlist-header-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 16px;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    display: block;
+}
+
+.playlist-name { font-size: 1.35rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px; }
 .playlist-sub { font-size: 0.95rem; color: #94a3b8; margin-bottom: 15px; }
 
-.vinyl-container { position: relative; width: 130px; height: 130px; margin: 15px auto; display: flex; align-items: center; justify-content: center; }
-.record { width: 130px; height: 130px; background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); border-radius: 50%; position: absolute; box-shadow: 0 6px 20px rgba(0,0,0,0.7); animation: spin 7s linear infinite; }
-.record-center { width: 36px; height: 36px; background: #38bdf8; border-radius: 50%; position: absolute; z-index: 2; }
+.vinyl-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.record {
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%);
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+    animation: spin 7s linear infinite;
+}
+
+.record-center {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+}
 
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
 .music-desc { color: #cbd5e1; font-size: 0.85rem; margin-top: 5px; }
-
-.spotify-link { 
-    display: inline-block; 
-    background: #1DB954; 
-    color: white; 
-    text-decoration: none; 
-    padding: 12px 24px; 
-    border-radius: 25px; 
-    font-weight: 600; 
-    margin-top: 15px; 
-    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
-}
 
 .back-btn { 
     background: transparent; 
@@ -247,7 +268,21 @@ input[type=range] {
     cursor: pointer; 
     margin-top: 20px; 
     font-size: 0.85rem; 
+    transition: 0.2s;
     width: 100%;
+}
+.back-btn:hover { background: #334155; color: #f8fafc; }
+
+.spotify-link { 
+    display: inline-block; 
+    background: #1DB954; 
+    color: white; 
+    text-decoration: none; 
+    padding: 12px 24px; 
+    border-radius: 25px; 
+    font-weight: 600; 
+    margin-top: 15px; 
+    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.2);
 }
 
 /* Kart Destesi (Stack) Stilleri */
@@ -263,7 +298,7 @@ input[type=range] {
 .card-stack {
     position: relative;
     width: 100%;
-    height: 310px;
+    height: 290px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -297,10 +332,17 @@ input[type=range] {
 
 .stack-card video {
     width: 100%;
-    height: 220px;
+    height: 200px;
     border-radius: 10px;
     object-fit: contain;
     background: #000;
+}
+
+.video-title {
+    font-size: 0.9rem;
+    color: #f1f5f9;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .stack-nav-btn {
