@@ -1,322 +1,143 @@
+/* Genel Sayfa Sıfırlama ve Düzen */
 * {
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent;
 }
 
-body { 
-    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #090d16 100%); 
-    color: #f1f5f9; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    min-height: 100vh; 
-    padding: 20px 15px; 
-    overflow-y: auto;
-    transition: background 0.8s ease;
-}
-
-body.pink-theme {
-    background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be123c 100%) !important;
-}
-
-.card { 
-    position: relative;
-    background: rgba(30, 41, 59, 0.85); 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 30px 22px; 
-    border-radius: 24px; 
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
-    width: 100%; 
-    max-width: 440px; 
-    text-align: center; 
-    margin: auto;
-    transition: background 0.8s ease, border-color 0.8s ease;
-    min-height: 320px;
-}
-
-body.pink-theme .card {
-    background: rgba(136, 19, 55, 0.85);
-    border: 1px solid rgba(251, 113, 133, 0.3);
-}
-
-/* Kalp Yükleme Ekranı Stilleri */
-.heart-loader-overlay {
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px 0;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px 10px;
 }
 
-#heartCanvas {
-    background: transparent;
-    margin-bottom: 15px;
-}
-
-.loading-bar-container {
-    width: 80%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.loading-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #f43f5e, #ec4899);
-    border-radius: 10px;
-    transition: width 0.05s linear;
-}
-
-.loading-text {
-    font-size: 0.9rem;
-    color: #f43f5e;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-h2 { color: #f8fafc; margin-bottom: 10px; font-size: 1.4rem; font-weight: 600; }
-.sub-desc { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; }
-
-.slider-container { margin: 25px 0; touch-action: none; }
-input[type=range] { 
-    width: 100%; 
-    accent-color: #38bdf8; 
-    margin-bottom: 15px; 
-    cursor: pointer; 
-    height: 10px;
-    border-radius: 5px;
-}
-
-.status-text { 
-    font-size: 1.05rem; 
-    font-weight: 500; 
-    color: #cbd5e1; 
-    min-height: 48px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    font-style: italic; 
-}
-
-.percent { 
-    font-size: 2.4rem; 
-    font-weight: 800; 
-    color: #38bdf8; 
-    margin-bottom: 10px; 
-    text-shadow: 0 0 12px rgba(56, 189, 248, 0.4); 
-}
-
-.main-btn { 
-    background: linear-gradient(135deg, #6366f1, #4f46e5); 
-    color: white; 
-    border: none; 
-    padding: 14px 28px; 
-    border-radius: 12px; 
-    font-size: 1rem; 
-    font-weight: 600;
-    cursor: pointer; 
-    transition: 0.3s; 
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+/* Kapsayıcı Kart Tasarımları */
+.card {
     width: 100%;
+    max-width: 360px;
+    margin: 12px auto;
+    background: #1a1a1a;
+    border: 2px solid #e91e63;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(233, 30, 99, 0.2);
+    text-align: center;
+    overflow: hidden; /* Taşmayı engeller */
 }
 
-.main-btn:disabled { 
-    background: #334155; 
-    color: #64748b; 
-    cursor: not-allowed; 
-    box-shadow: none; 
-    opacity: 0.6; 
+h1, h2, h3 {
+    color: #ff4081;
+    margin-bottom: 10px;
 }
 
-.hidden { display: none !important; }
-
-.boxes-container { display: flex; justify-content: center; margin-top: 20px; gap: 15px; flex-wrap: wrap; }
-.gift-box-wrapper { cursor: pointer; transition: 0.3s; width: 100px; text-align: center; }
-.gift-box-wrapper:active { transform: scale(0.95); }
-
-.gift-box {
-    position: relative;
-    width: 75px;
-    height: 68px;
-    background: #312e81; 
-    border-radius: 8px;
-    margin: 0 auto 10px auto;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.pink-box { background: #831843 !important; }
-
-.gift-box::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: -4px;
-    width: 83px;
-    height: 16px;
-    background: #3730a3;
-    border-radius: 5px;
-}
-
-.pink-box::before { background: #9f1239 !important; }
-
-.gift-box::after {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 31px;
-    width: 12px;
-    height: 78px;
-    background: #9f1239;
-}
-
-.ribbon-bow {
-    position: absolute;
-    top: -20px;
-    left: 23px;
-    width: 28px;
-    height: 14px;
-    background: #be123c;
-    border-radius: 10px;
-    z-index: 2;
-}
-
-.pink-bow { background: #f43f5e !important; }
-.gift-title { font-weight: 500; color: #94a3b8; font-size: 0.85rem; }
-.pink-title { color: #f43f5e !important; font-weight: bold; }
-
-.journal-box { 
-    margin-top: 15px; 
-    padding: 22px 18px 22px 26px; 
-    border-radius: 12px; 
-    background: #fdfbf7; 
-    color: #2c3e50;
-    text-align: left; 
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.05), 0 5px 15px rgba(0,0,0,0.3);
-    border-left: 4px solid #e74c3c;
-    background-image: linear-gradient(#e1e8ed 1px, transparent 1px);
-    background-size: 100% 28px;
-    line-height: 28px;
-    max-height: 55vh;
-    overflow-y: auto;
-}
-
-.journal-header { font-size: 0.85rem; color: #7f8c8d; font-style: italic; margin-bottom: 8px; border-bottom: 1px dashed #cbd5e1; padding-bottom: 4px; }
-.journal-title { font-family: 'Georgia', serif; font-size: 1.2rem; color: #1a252f; margin-bottom: 10px; font-weight: bold; }
-.journal-content { font-family: 'Georgia', serif; font-size: 0.95rem; color: #34495e; white-space: pre-line; }
-
-.playlist-header-img { width: 150px; height: 150px; border-radius: 16px; margin: 0 auto 15px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.6); display: block; }
-.playlist-name { font-size: 1.3rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px; }
-.playlist-sub { font-size: 0.95rem; color: #94a3b8; margin-bottom: 15px; }
-
-.vinyl-container { position: relative; width: 130px; height: 130px; margin: 15px auto; display: flex; align-items: center; justify-content: center; }
-.record { width: 130px; height: 130px; background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); border-radius: 50%; position: absolute; box-shadow: 0 6px 20px rgba(0,0,0,0.7); animation: spin 7s linear infinite; }
-.record-center { width: 36px; height: 36px; background: #38bdf8; border-radius: 50%; position: absolute; z-index: 2; }
-
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-.music-desc { color: #cbd5e1; font-size: 0.85rem; margin-top: 5px; }
-
-.spotify-link { 
-    display: inline-block; 
-    background: #1DB954; 
-    color: white; 
-    text-decoration: none; 
-    padding: 12px 24px; 
-    border-radius: 25px; 
-    font-weight: 600; 
-    margin-top: 15px; 
-    box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
-}
-
-.back-btn { 
-    background: transparent; 
-    color: #94a3b8; 
-    border: 1px solid #475569; 
-    padding: 10px 20px; 
-    border-radius: 10px; 
-    cursor: pointer; 
-    margin-top: 20px; 
-    font-size: 0.85rem; 
-    width: 100%;
-}
-
-/* Kart Destesi (Stack) Stilleri */
-.card-stack-container {
-    position: relative;
+/* Slider Tasarımı */
+input[type="range"] {
     width: 100%;
     margin: 15px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    accent-color: #e91e63;
 }
 
-.card-stack {
-    position: relative;
+/* Canvas / Kalp Çizim Alanı */
+canvas {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.progress-bar-container {
     width: 100%;
-    height: 310px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 12px;
+    background-color: #e91e63;
+    transition: width 0.1s linear;
+}
+
+/* Not Mektubu Kutu Stili */
+.note-box {
+    background: #252525;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #e91e63;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Plak Oyuncusu Stili */
+.vinyl-container {
     display: flex;
     justify-content: center;
+    margin: 15px 0;
+}
+
+.vinyl-record {
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, #111 30%, #333 31%, #111 32%, #111 60%, #222 61%);
+    border-radius: 50%;
+    border: 3px solid #ff4081;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.stack-card {
-    position: absolute;
-    width: 92%;
-    max-width: 320px;
-    background: rgba(15, 23, 42, 0.95);
-    border-radius: 16px;
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease, z-index 0.4s;
-    user-select: none;
+.vinyl-center {
+    width: 36px;
+    height: 36px;
+    background: #e91e63;
+    border-radius: 50%;
+    border: 2px solid #fff;
 }
 
-.stack-card.active {
-    z-index: 10;
-    transform: translateY(0) scale(1) rotate(0deg);
-    opacity: 1;
+.spinning {
+    animation: spin 3s linear infinite;
 }
 
-.stack-card:not(.active) {
-    z-index: 5;
-    transform: translateY(16px) scale(0.92) rotate(-4deg);
-    opacity: 0.75;
-    pointer-events: none;
+@keyframes spin {
+    100% { transform: rotate(360deg); }
 }
 
-.stack-card video {
+/* Video Düzenlemeleri (Taşmayı Önleyen Alan) */
+.video-container {
     width: 100%;
-    height: 220px;
-    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+video {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 400px;
     object-fit: contain;
-    background: #000;
+    border-radius: 10px;
+    outline: none;
+    display: block;
+    margin: 0 auto;
 }
 
-.stack-nav-btn {
-    margin-top: 15px;
-    background: rgba(244, 63, 94, 0.2);
-    border: 1px solid #f43f5e;
-    color: #f43f5e;
-    padding: 10px 20px;
+/* Genel Buton Stili */
+.btn {
+    background: #e91e63;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
     border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
     cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.stack-nav-btn:active {
-    transform: scale(0.95);
-    background: rgba(244, 63, 94, 0.4);
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
 }
