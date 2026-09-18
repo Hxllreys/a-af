@@ -23,6 +23,7 @@ body.pink-theme {
 }
 
 .card { 
+    position: relative;
     background: rgba(30, 41, 59, 0.85); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -35,11 +36,51 @@ body.pink-theme {
     text-align: center; 
     margin: auto;
     transition: background 0.8s ease, border-color 0.8s ease;
+    min-height: 320px;
 }
 
 body.pink-theme .card {
     background: rgba(136, 19, 55, 0.85);
     border: 1px solid rgba(251, 113, 133, 0.3);
+}
+
+/* Kalp Yükleme Ekranı Stilleri */
+.heart-loader-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+#heartCanvas {
+    background: transparent;
+    margin-bottom: 15px;
+}
+
+.loading-bar-container {
+    width: 80%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.loading-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #f43f5e, #ec4899);
+    border-radius: 10px;
+    transition: width 0.05s linear;
+}
+
+.loading-text {
+    font-size: 0.9rem;
+    color: #f43f5e;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 h2 { color: #f8fafc; margin-bottom: 10px; font-size: 1.4rem; font-weight: 600; }

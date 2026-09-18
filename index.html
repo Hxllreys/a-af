@@ -9,6 +9,16 @@
 <body>
 
 <div class="card">
+    <!-- Yükleme / Kalem Çizim Ekranı Overlay -->
+    <div id="heart-loader" class="heart-loader-overlay hidden">
+        <canvas id="heartCanvas" width="260" height="240"></canvas>
+        <div class="loading-bar-container">
+            <div id="loading-bar" class="loading-bar"></div>
+        </div>
+        <div id="loading-text" class="loading-text">Yükleniyor %0</div>
+    </div>
+
+    <!-- 1. Adım: Slider -->
     <div id="step-1">
         <h2>Beni ne kadar özledin? 💭</h2>
         <div class="percent" id="percent-val">%0</div>
@@ -22,6 +32,7 @@
         <button id="next-btn" class="main-btn" disabled>Devam Et</button>
     </div>
 
+    <!-- 2. Adım: Hediye Kutuları -->
     <div id="step-2" class="hidden">
         <h2>Sürprizlerin Hazır 🎁</h2>
         <p class="sub-desc">Açmak istediğin kutuya tıkla:</p>
@@ -44,6 +55,7 @@
         </div>
     </div>
 
+    <!-- Hediye 1: Not Kutusu -->
     <div id="note-box" class="hidden">
         <div class="journal-box">
             <div class="journal-header">Nice mutlu senelere... 📖</div>
@@ -55,6 +67,7 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
+    <!-- Hediye 2: Müzik Kutusu -->
     <div id="music-box" class="hidden">
         <div>
             <svg class="playlist-header-img" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -80,6 +93,7 @@
         <button class="back-btn">← Hediyelere Dön</button>
     </div>
 
+    <!-- Hediye 3: Video Kutusu -->
     <div id="video-box" class="hidden">
         <h2>Anılarımız 🎬</h2>
         <p class="sub-desc">Sana özel hazırladığım videolar</p>
