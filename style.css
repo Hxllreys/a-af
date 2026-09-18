@@ -42,7 +42,7 @@ body.pink-theme .card {
     border: 1px solid rgba(251, 113, 133, 0.3);
 }
 
-h2 { color: #f8fafc; margin-bottom: 20px; font-size: 1.4rem; font-weight: 600; }
+h2 { color: #f8fafc; margin-bottom: 10px; font-size: 1.4rem; font-weight: 600; }
 .sub-desc { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; }
 
 .slider-container { margin: 25px 0; touch-action: none; }
@@ -153,26 +153,6 @@ input[type=range] {
 .gift-title { font-weight: 500; color: #94a3b8; font-size: 0.85rem; }
 .pink-title { color: #f43f5e !important; font-weight: bold; }
 
-.heart-canvas-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.8s ease;
-    width: 100%;
-}
-
-#heartCanvas {
-    background: #000000;
-    border-radius: 16px;
-    box-shadow: 0 0 25px rgba(255, 182, 193, 0.25);
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-}
-
-.heart-sub { color: #ffb6c1; font-size: 0.85rem; margin-top: 12px; font-style: italic; }
-
 .journal-box { 
     margin-top: 15px; 
     padding: 22px 18px 22px 26px; 
@@ -185,7 +165,7 @@ input[type=range] {
     background-image: linear-gradient(#e1e8ed 1px, transparent 1px);
     background-size: 100% 28px;
     line-height: 28px;
-    max-height: 50vh;
+    max-height: 55vh;
     overflow-y: auto;
 }
 
@@ -217,22 +197,10 @@ input[type=range] {
     box-shadow: 0 4px 12px rgba(29, 185, 84, 0.3);
 }
 
-.pink-sub { color: #fca5a5; font-size: 0.85rem; margin-bottom: 15px; }
-
-#ecgCanvas {
-    background: #000;
-    border-radius: 16px;
-    box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
-    width: 100%;
-    max-width: 320px;
-    height: auto;
-    margin-bottom: 15px;
-}
-
 .videos-wrapper { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
 .video-card { background: rgba(0, 0, 0, 0.4); border-radius: 12px; padding: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
 .video-title { color: #fbcfe8; font-size: 0.85rem; margin-bottom: 8px; }
-.video-card video { width: 100%; border-radius: 8px; max-height: 240px; }
+.video-card video { width: 100%; border-radius: 8px; max-height: 280px; object-fit: contain; }
 
 .back-btn { 
     background: transparent; 
