@@ -66,17 +66,17 @@ document.addEventListener("DOMContentLoaded", function () {
             if (count <= 0) {
                 clearInterval(timer);
                 countdownScreen.classList.add('hidden');
-                giftScreen.classList.remove('hidden'); // Geri sayım bittiğinde 3D hediye kutusu ekranını gösterir
+                giftScreen.classList.remove('hidden');
             }
         }, 1000);
     });
 
-    // Hediye kutusuna tıklama
+    // Kutuya tıklanınca titreyip büyüyerek açılma efekti
     giftBox.addEventListener('click', () => {
-        giftBox.classList.add('open');
+        giftBox.classList.add('opening-effect');
         setTimeout(() => {
             giftScreen.classList.add('hidden');
-            playlistScreen.classList.remove('hidden'); // Kapak açıldıktan sonra playlist ekranına geçer
-        }, 800);
+            playlistScreen.classList.remove('hidden');
+        }, 750);
     });
 });
