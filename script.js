@@ -42,9 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
         noBtn.style.left = `${randomX}vw`;
         noBtn.style.top = `${randomY}vh`;
 
-        const newWidth = 120 + (clickCount * 40);
-        const newHeight = 45 + (clickCount * 25);
-        const newFontSize = 1 + (clickCount * 0.15);
+        // Evet butonunu aşamalı olarak büyüt
+        const newWidth = 120 + (clickCount * 30);
+        const newHeight = 45 + (clickCount * 20);
+        const newFontSize = 1 + (clickCount * 0.12);
 
         yesBtn.style.width = `${newWidth}px`;
         yesBtn.style.height = `${newHeight}px`;
@@ -71,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 1000);
     });
 
-    // Kutuya tıklanınca titreyip büyüyerek açılma efekti
     giftBox.addEventListener('click', () => {
         giftBox.classList.add('opening-effect');
         setTimeout(() => {
