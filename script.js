@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let clickCount = 0;
 
     introBtn.addEventListener('click', () => {
-        // İlk butona tıklandığında sesi çal
         if (bgMusic) {
             bgMusic.play().catch(error => {
                 console.log("Müzik oynatılırken engel takıldı:", error);
@@ -50,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
         noBtn.style.left = `${randomX}vw`;
         noBtn.style.top = `${randomY}vh`;
 
-        // Evet butonunu büyüt
         const newWidth = 120 + (clickCount * 30);
         const newHeight = 45 + (clickCount * 20);
         const newFontSize = 1 + (clickCount * 0.12);
