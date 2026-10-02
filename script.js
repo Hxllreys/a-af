@@ -27,15 +27,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         noBtn.style.position = 'fixed';
-        noBtn.style.width = '110px';
-        noBtn.style.height = '45px';
         noBtn.style.zIndex = '999999';
 
-        // 10 tıklamada aşamalı olarak küçülüp kaybolma mantığı
-        const newScale = Math.max(0, 1 - (clickCount * 0.10));
-        noBtn.style.transform = `scale(${newScale})`;
+        // 10 Tıklamada doğrudan Piksel cinsinden küçülme
+        const initialWidth = 110;
+        const initialHeight = 45;
+        const initialFontSize = 1;
 
-        if (clickCount >= 10) {
+        const currentWidth = Math.max(0, initialWidth - (clickCount * 11));
+        const currentHeight = Math.max(0, initialHeight - (clickCount * 4.5));
+        const currentFontSize = Math.max(0, initialFontSize - (clickCount * 0.1));
+
+        noBtn.style.width = `${currentWidth}px`;
+        noBtn.style.height = `${currentHeight}px`;
+        noBtn.style.fontSize = `${currentFontSize}rem`;
+        noBtn.style.padding = '0';
+
+        // 10 veya daha fazla tıklamada tamamen kaldır
+        if (clickCount >= 10 || currentWidth <= 0) {
             noBtn.style.display = 'none';
         }
 
@@ -61,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
         sureScreen.classList.add('hidden');
         countdownScreen.classList.remove('hidden');
 
-        // Body'ye taşınan Hayır butonunu gizle
         noBtn.style.display = 'none';
 
         let count = 10;
