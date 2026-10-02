@@ -1,3 +1,19 @@
+let player;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-player', {
+        height: '0',
+        width: '0',
+        videoId: 'Iv0WWgBvIQM', // Şam - MUM şarkısının YouTube ID'si
+        playerVars: {
+            'autoplay': 0,
+            'controls': 0,
+            'loop': 1,
+            'playlist': 'Iv0WWgBvIQM'
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const introScreen = document.getElementById('step-intro');
     const sureScreen = document.getElementById('step-sure');
@@ -14,6 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let clickCount = 0;
 
     introBtn.addEventListener('click', () => {
+        // İlk butona basıldığı an YouTube şarkısını başlat
+        if (player && typeof player.playVideo === 'function') {
+            player.playVideo();
+        }
+
         introScreen.classList.add('hidden');
         sureScreen.classList.remove('hidden');
     });
