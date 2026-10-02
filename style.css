@@ -19,7 +19,7 @@ body {
     align-items: center; 
     padding: 20px 15px; 
     overflow-x: hidden;
-    overflow-y: auto; /* Yukarı kaydırıp yenilemeye (pull-to-refresh) izin verir */
+    overflow-y: auto;
     position: relative;
 }
 
@@ -113,7 +113,7 @@ h2 {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fce7f3;
-    transition: transform 0.15s ease, top 0.15s ease, left 0.15s ease;
+    white-space: nowrap;
 }
 
 .countdown-number {
@@ -130,6 +130,86 @@ h2 {
     100% { transform: scale(1.08); }
 }
 
+/* 3D HEDİYE KUTUSU */
+.gift-box-wrapper {
+    perspective: 1000px;
+    margin: 30px auto;
+    cursor: pointer;
+    width: 120px;
+    height: 120px;
+}
+
+.gift-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.gift-box:hover {
+    transform: rotateY(15deg) rotateX(10deg);
+}
+
+.gift-body {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    background: #e11d48;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
+.gift-lid {
+    width: 108%;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: -4%;
+    background: #f43f5e;
+    border-radius: 6px;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.ribbon-v {
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    background: #fbbf24;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ribbon-h {
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    background: #fbbf24;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.bow {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 15px;
+    background: #fbbf24;
+    border-radius: 15px 15px 0 0;
+}
+
+.gift-box-wrapper.open .gift-lid {
+    transform: translateY(-80px) rotate(-20deg);
+    opacity: 0;
+}
+
+/* PLAYLIST & PLAK BANNER */
 .playlist-header-img-container {
     width: 130px;
     height: 130px;
@@ -161,32 +241,33 @@ h2 {
 
 .vinyl-container { 
     position: relative; 
-    width: 130px; 
-    height: 130px; 
-    margin: 15px auto; 
+    width: 140px; 
+    height: 140px; 
+    margin: 20px auto; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
 }
 
 .record { 
-    width: 130px; 
-    height: 130px; 
+    width: 140px; 
+    height: 140px; 
     background: radial-gradient(circle, #000 25%, #181818 26%, #282828 45%, #111 60%, #000 70%); 
     border-radius: 50%; 
     position: absolute; 
     box-shadow: 0 6px 20px rgba(0,0,0,0.7); 
-    animation: spin 7s linear infinite; 
+    animation: spin 5s linear infinite; 
 }
 
 .record-center-img-wrapper {
-    width: 42px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     position: absolute;
     z-index: 2;
     overflow: hidden;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
+    animation: spin 5s linear infinite;
 }
 
 .record-center-img {
@@ -196,6 +277,7 @@ h2 {
 }
 
 @keyframes spin { 
+    0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); } 
 }
 
@@ -222,12 +304,4 @@ h2 {
 .spotify-link:hover {
     background: #1aa34a;
     transform: scale(1.03);
-}
-
-img.emoji {
-    height: 1.1em;
-    width: 1.1em;
-    margin: 0 0.1em;
-    vertical-align: -0.15em;
-    display: inline-block;
 }
