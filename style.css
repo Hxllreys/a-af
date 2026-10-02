@@ -94,7 +94,7 @@ h2 {
     box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
     z-index: 10;
     transform-origin: center center;
-    transition: transform 0.25s ease;
+    transition: transform 0.2s ease;
     white-space: nowrap;
 }
 
@@ -102,7 +102,7 @@ h2 {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fce7f3;
-    flex-shrink: 0; /* Boyutunun daralmasını kesin olarak engeller */
+    flex-shrink: 0;
     transition: top 0.2s ease, left 0.2s ease;
 }
 
