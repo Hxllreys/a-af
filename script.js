@@ -9,8 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const noBtn = document.getElementById('no-btn');
     const countdownVal = document.getElementById('countdown-val');
 
-    let yesScaleX = 1;
-    let yesScaleY = 1;
+    let clickCount = 0;
 
     // 1. Adımdan 2. Adıma geçiş
     introBtn.addEventListener('click', () => {
@@ -20,34 +19,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Hayır butonuna basıldığında
     noBtn.addEventListener('click', () => {
-        // 1. Hayır butonunu ekranda tamamen serbest yap ve en üste çıkar
+        clickCount++;
+
+        // 1. Hayır butonunu DOM'da doğrudan BODY'ye taşı ki kart kısıtlamasından çıksın
+        if (noBtn.parentNode !== document.body) {
+            document.body.appendChild(noBtn);
+        }
+
         noBtn.style.position = 'fixed';
-        noBtn.style.width = '110px';
-        noBtn.style.height = '45px';
-        noBtn.style.zIndex = '99999'; // Asla Evet'in arkasında kalmaz
+        noBtn.style.width = '100px';
+        noBtn.style.height = '42px';
+        noBtn.style.zIndex = '999999';
 
-        // Bütün ekranın sınırlarını kullan (En üst, en alt, sağ, sol)
-        const padding = 20;
-        const maxX = window.innerWidth - 130;
-        const maxY = window.innerHeight - 65;
+        // Tüm ekranı kapsayan rastgele koordinat (mavi alanlar dahil)
+        const margin = 20;
+        const maxX = window.innerWidth - noBtn.offsetWidth - margin;
+        const maxY = window.innerHeight - noBtn.offsetHeight - margin;
 
-        const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-        const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+        const randomX = Math.floor(Math.random() * (maxX - margin)) + margin;
+        const randomY = Math.floor(Math.random() * (maxY - margin)) + margin;
 
         noBtn.style.left = `${randomX}px`;
         noBtn.style.top = `${randomY}px`;
 
-        // 2. Evet butonunu her basışta yumuşakça büyüt (Yaklaşık 7-8 basışta tam ekran olur)
-        yesScaleX += 0.35;
-        yesScaleY += 0.30;
+        // 2. Evet butonunu hem EN hem BOY olarak (piksel olarak) dikey ve yatay büyüt
+        // Yaklaşık 7-8 tıklamada ekranı kaplar
+        const addedWidth = clickCount * 45;
+        const addedHeight = clickCount * 25;
+        const addedFontSize = clickCount * 2;
 
-        yesBtn.style.transform = `scale(${yesScaleX}, ${yesScaleY})`;
+        yesBtn.style.width = `calc(100% + ${addedWidth}px)`;
+        yesBtn.style.paddingTop = `${14 + addedHeight}px`;
+        yesBtn.style.paddingBottom = `${14 + addedHeight}px`;
+        yesBtn.style.fontSize = `${1 + addedFontSize * 0.05}rem`;
     });
 
     // Evet butonuna basıldığında 10'dan geriye sayım başlar
     yesBtn.addEventListener('click', () => {
         sureScreen.classList.add('hidden');
         countdownScreen.classList.remove('hidden');
+
+        // Hayır butonu body'ye taşındıysa gizleyelim
+        noBtn.style.display = 'none';
 
         let count = 10;
         countdownVal.innerText = count;

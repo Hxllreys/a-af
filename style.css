@@ -15,6 +15,7 @@ body {
     min-height: 100vh; 
     padding: 20px 15px; 
     overflow: hidden;
+    position: relative;
 }
 
 .card { 
@@ -29,6 +30,9 @@ body {
     max-width: 400px; 
     text-align: center; 
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hidden { display: none !important; }
@@ -69,11 +73,12 @@ h2 {
 .choice-container {
     position: relative;
     display: flex;
+    flex-direction: row;
     gap: 15px;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    min-height: 70px;
+    width: 100%;
 }
 
 .choice-btn {
@@ -82,7 +87,7 @@ h2 {
     font-size: 1rem;
     cursor: pointer;
     border: none;
-    padding: 12px 24px;
+    padding: 14px 24px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -93,9 +98,9 @@ h2 {
     color: white;
     box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
     z-index: 10;
-    transform-origin: center center;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease-out;
     white-space: nowrap;
+    min-width: 110px;
 }
 
 .secondary-btn {
@@ -103,7 +108,7 @@ h2 {
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fce7f3;
     flex-shrink: 0;
-    transition: top 0.2s ease, left 0.2s ease;
+    transition: top 0.15s ease, left 0.15s ease;
 }
 
 .countdown-number {
