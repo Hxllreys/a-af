@@ -28,6 +28,7 @@ body {
     width: 100%; 
     max-width: 400px; 
     text-align: center; 
+    overflow: visible; /* Büyüyen Evet butonunun karttan taşmasına izin verir */
 }
 
 .hidden { display: none !important; }
@@ -77,8 +78,12 @@ h2 {
 
 .choice-btn {
     flex: 1;
-    transition: transform 0.25s ease, top 0.25s ease, left 0.25s ease;
-    z-index: 2;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.2s ease, left 0.2s ease;
+}
+
+.primary-btn {
+    z-index: 5;
+    transform-origin: center center;
 }
 
 .secondary-btn {
@@ -86,6 +91,7 @@ h2 {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: none;
     color: #fce7f3;
+    z-index: 4;
 }
 
 .countdown-number {
@@ -196,7 +202,6 @@ h2 {
     transform: scale(1.03);
 }
 
-/* Emojilerin boyutu ve uyumu düzenlendi */
 img.emoji {
     height: 1.1em;
     width: 1.1em;

@@ -18,20 +18,24 @@ document.addEventListener("DOMContentLoaded", function () {
         sureScreen.classList.remove('hidden');
     });
 
-    // Hayır butonuna basıldığında konum değiştirir, Evet butonu hem en hem boy olarak büyür
+    // Hayır butonuna basıldığında: Hayır Asla KÜÇÜLMEZ, sadece yer değiştirir.
+    // Evet butonu her seferinde daha fazla büyür.
     noBtn.addEventListener('click', () => {
-        // Evet butonunu büyüt
-        yesScale += 0.35;
+        // Evet butonunu büyük oranda büyüt
+        yesScale += 0.55;
         yesBtn.style.transform = `scale(${yesScale})`;
+        yesBtn.style.zIndex = "10"; // Büyüdükçe ön plana çıksın
 
-        // Hayır butonunu kaçır (Kart sınırları içinde rastgele pozisyon)
+        // Hayır butonunun boyutunu sabitle (küçülmesini engelle)
+        noBtn.style.transform = "scale(1)";
         noBtn.style.position = 'absolute';
         
+        // Kart içinde rastgele yeni konum belirle
         const maxX = choiceArea.clientWidth - noBtn.clientWidth;
         const maxY = choiceArea.clientHeight - noBtn.clientHeight;
 
-        const randomX = Math.floor(Math.random() * (maxX + 80)) - 40;
-        const randomY = Math.floor(Math.random() * (maxY + 60)) - 30;
+        const randomX = Math.floor(Math.random() * Math.max(maxX, 100)) - 20;
+        const randomY = Math.floor(Math.random() * Math.max(maxY, 80)) - 20;
 
         noBtn.style.left = `${randomX}px`;
         noBtn.style.top = `${randomY}px`;
