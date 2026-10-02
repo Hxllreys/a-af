@@ -1,7 +1,6 @@
 * { 
     box-sizing: border-box; 
-    /* Font ailesine Apple Color Emoji'yi ekledik */
-    font-family: -apple-system, BlinkMacSystemFont, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
     margin: 0; 
     padding: 0; 
     -webkit-tap-highlight-color: transparent;
@@ -66,7 +65,6 @@ h2 {
     width: 100%;
 }
 
-/* Emin misin ekranı butonları */
 .choice-container {
     display: flex;
     gap: 12px;
@@ -87,7 +85,6 @@ h2 {
     color: #fce7f3;
 }
 
-/* Geri Sayım Numarası */
 .countdown-number {
     font-size: 4rem;
     font-weight: 800;
@@ -102,7 +99,6 @@ h2 {
     100% { transform: scale(1.08); }
 }
 
-/* Playlist & Kedi Fotoğrafı Tasarımı */
 .playlist-header-img-container {
     width: 130px;
     height: 130px;
@@ -132,7 +128,6 @@ h2 {
     margin-bottom: 15px; 
 }
 
-/* Dönen Plak Detayları */
 .vinyl-container { 
     position: relative; 
     width: 130px; 
@@ -198,10 +193,11 @@ h2 {
     transform: scale(1.03);
 }
 
-/* Twemoji / Custom Emoji Görselleri İçin Stil */
+/* Apple Emoji Görsel Hizalaması */
 img.emoji {
     height: 1.2em;
     width: 1.2em;
-    margin: 0 0.15em 0 0.15em;
-    vertical-align: -0.2em;
+    margin: 0 0.15em;
+    vertical-align: -0.18em;
+    display: inline-block;
 }

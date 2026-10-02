@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let yesScale = 1;
     let noScale = 1;
 
-    // 1. Adımdan "Emin misin?" adımına geçiş
+    // 1. Adımdan 2. Adıma geçiş
     introBtn.addEventListener('click', () => {
         introScreen.classList.add('hidden');
         sureScreen.classList.remove('hidden');
     });
 
-    // Hayır butonuna basıldıkça Evet büyür, Hayır küçülür/gider
+    // Hayır butonuna basıldıkça Evet büyür, Hayır küçülür/kaybolur
     noBtn.addEventListener('click', () => {
         yesScale += 0.2;
         noScale -= 0.15;
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (noScale > 0.2) {
             noBtn.style.transform = `scale(${noScale})`;
         } else {
-            noBtn.style.display = 'none'; // Hayır tamamen yok olur
+            noBtn.style.display = 'none';
         }
     });
 
