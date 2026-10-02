@@ -28,7 +28,7 @@ body {
     width: 100%; 
     max-width: 400px; 
     text-align: center; 
-    overflow: visible; /* Büyüyen Evet butonunun karttan taşmasına izin verir */
+    overflow: visible;
 }
 
 .hidden { display: none !important; }
@@ -53,7 +53,7 @@ h2 {
     margin-bottom: 25px; 
 }
 
-.main-btn, .choice-btn { 
+.main-btn { 
     background: linear-gradient(135deg, #f43f5e, #e11d48); 
     color: white; 
     border: none; 
@@ -69,29 +69,41 @@ h2 {
 .choice-container {
     position: relative;
     display: flex;
-    gap: 12px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
-    margin-top: 15px;
-    min-height: 60px;
+    margin-top: 20px;
+    min-height: 70px;
 }
 
 .choice-btn {
-    flex: 1;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.2s ease, left 0.2s ease;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .primary-btn {
-    z-index: 5;
+    background: linear-gradient(135deg, #f43f5e, #e11d48);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+    z-index: 10;
     transform-origin: center center;
+    transition: transform 0.25s ease;
+    white-space: nowrap;
 }
 
 .secondary-btn {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: none;
     color: #fce7f3;
-    z-index: 4;
+    flex-shrink: 0; /* Boyutunun daralmasını kesin olarak engeller */
+    transition: top 0.2s ease, left 0.2s ease;
 }
 
 .countdown-number {
