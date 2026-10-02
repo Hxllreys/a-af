@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     noBtn.addEventListener('click', () => {
         clickCount++;
 
-        // Hayır butonunu doğrudan HTML Body'ye taşı ki kartla hiçbir bağı kalmasın
+        // Hayır butonunu DOM'da Body'ye taşı
         if (noBtn.parentNode !== document.body) {
             document.body.appendChild(noBtn);
         }
@@ -31,16 +31,22 @@ document.addEventListener("DOMContentLoaded", function () {
         noBtn.style.height = '45px';
         noBtn.style.zIndex = '999999';
 
-        // Tam Ekran Rastgele Konum (Ekranın en üstünden en altına kadar)
-        // %5 ile %85 arasında rastgele Y koordinatı vererek üst/alt barlardan taşmasını engelliyoruz
-        const randomX = Math.floor(Math.random() * 70) + 10; // %10 ile %80 arası
-        const randomY = Math.floor(Math.random() * 80) + 5;  // %5 ile %85 arası
+        // 10 tıklamada aşamalı olarak küçülüp kaybolma mantığı
+        const newScale = Math.max(0, 1 - (clickCount * 0.10));
+        noBtn.style.transform = `scale(${newScale})`;
+
+        if (clickCount >= 10) {
+            noBtn.style.display = 'none';
+        }
+
+        // Tam Ekran Rastgele Konum
+        const randomX = Math.floor(Math.random() * 70) + 10;
+        const randomY = Math.floor(Math.random() * 80) + 5;
 
         noBtn.style.left = `${randomX}vw`;
         noBtn.style.top = `${randomY}vh`;
 
-        // Evet Butonunun Genişlik ve Yüksekliğini doğrudan Dikey/Yatay Büyüt
-        // Yaklaşık 7-8 basışta tam ekran olur
+        // Evet Butonunu dikey ve yatay büyüt
         const newWidth = 120 + (clickCount * 40);
         const newHeight = 45 + (clickCount * 25);
         const newFontSize = 1 + (clickCount * 0.15);

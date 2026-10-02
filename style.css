@@ -6,15 +6,20 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html, body {
+    width: 100%;
+    min-height: 100vh;
+}
+
 body { 
     background: linear-gradient(135deg, #4c0519 0%, #831843 50%, #be123c 100%); 
     color: #f1f5f9; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    min-height: 100vh; 
     padding: 20px 15px; 
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto; /* Yukarı kaydırıp yenilemeye (pull-to-refresh) izin verir */
     position: relative;
 }
 
@@ -108,7 +113,7 @@ h2 {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fce7f3;
-    transition: all 0.15s ease;
+    transition: transform 0.15s ease, top 0.15s ease, left 0.15s ease;
 }
 
 .countdown-number {

@@ -2,58 +2,60 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>İyi ki Doğdun Kiral! 🎂</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sürpriz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-    <!-- 1. Adım: Kapak Ekranı -->
-    <div id="step-intro" class="screen">
-        <h1 class="main-title">Doğum Günün Kutlu Olsun Kiral! <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f389.png" class="emoji" alt="🎉"></h1>
-        <p class="sub-desc">Sana harika bir sürprizim var kiral.</p>
-        <button id="intro-btn" class="main-btn">Devam Et <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f680.png" class="emoji" alt="🚀"></button>
-    </div>
-
-    <!-- 2. Adım: Emin misin? Ekranı -->
-    <div id="step-sure" class="screen hidden">
-        <h2>Hediyeni açmak istediğinden emin misin kiral? <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f911.png" class="emoji" alt="🤔"></h2>
-        <div class="choice-container" id="choice-area">
-            <button id="no-btn" class="choice-btn secondary-btn">Hayır <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f644.png" class="emoji" alt="🙄"></button>
-            <button id="yes-btn" class="choice-btn primary-btn">Evet! <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f929.png" class="emoji" alt="🤩"></button>
-        </div>
-    </div>
-
-    <!-- 3. Adım: 10'dan Geri Sayım Ekranı -->
-    <div id="step-countdown" class="screen hidden">
-        <h2>Sürpriz Hazırlanıyor Kiral... <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/23f3.png" class="emoji" alt="⏳"></h2>
-        <div id="countdown-val" class="countdown-number">10</div>
-        <p class="sub-desc">Geri sayım bitiyor, sıkı dur!</p>
-    </div>
-
-    <!-- 4. Adım: Spotify Playlist ve Kedi Fotoğraflı Kapak -->
-    <div id="step-playlist" class="screen hidden">
-        <div class="playlist-header-img-container">
-            <img src="1000015564.jpg" alt="Playlist Kapağı" class="playlist-header-img">
+    <div class="card">
+        <!-- 1. ADIM -->
+        <div id="step-intro">
+            <h1 class="main-title">Sana Bir Sürprizim Var! 🎁</h1>
+            <p class="sub-desc">Görmek için aşağıdaki butona tıkla.</p>
+            <button id="intro-btn" class="main-btn">Sürprizi Gör ✨</button>
         </div>
 
-        <div class="playlist-name">İyi ki Doğdun Kiral <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f7e1.png" class="emoji" alt="🎧"></div>
-        <div class="playlist-sub">Sadece sana özel seçildi <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f3b6.png" class="emoji" alt="🎶"></div>
-        
-        <div class="vinyl-container">
-            <div class="record"></div>
-            <div class="record-center-img-wrapper">
-                <img src="1000015564.jpg" alt="Plak Ortası" class="record-center-img">
+        <!-- 2. ADIM -->
+        <div id="step-sure" class="hidden">
+            <h2>Hediyeni açmak istediğinden emin misin? 🤑</h2>
+            <div class="choice-container">
+                <button id="yes-btn" class="choice-btn primary-btn">Evet! 🤩</button>
+                <button id="no-btn" class="choice-btn secondary-btn">Hayır 😜</button>
             </div>
         </div>
 
-        <p class="music-desc">İyi ki varsın kiral, nice mutlu senelere!</p>
-        
-        <a href="https://open.spotify.com/playlist/552BL05HIcPV6p3OWtjt2W?si=R71BY3S-QamVvEM8JSp-cQ&utm_source=copy-link&pt=14c52dc9c4f54076abe5db5a3f6cb069" target="_blank" class="spotify-link">Spotify'da Dinle <img src="https://cdn.jsdelivr.net/npm/emoji-datasource-apple@14.0.0/img/apple/64/1f3b8.png" class="emoji" alt="🎸"></a>
-    </div>
-</div>
+        <!-- 3. ADIM -->
+        <div id="step-countdown" class="hidden">
+            <h2>Sürpriz Hazırlanıyor... ⏳</h2>
+            <div id="countdown-val" class="countdown-number">10</div>
+            <p class="sub-desc">Geri sayım bitiyor, sıkı dur!</p>
+        </div>
 
-<script src="script.js"></script>
+        <!-- 4. ADIM -->
+        <div id="step-playlist" class="hidden">
+            <div class="playlist-header-img-container">
+                <img src="cover.jpeg" alt="Playlist Kapağı" class="playlist-header-img">
+            </div>
+            
+            <h2 class="playlist-name">Sana Özel Şarkı Listesi 🎵</h2>
+            <p class="playlist-sub">Keyifle dinlemen dileğiyle!</p>
+
+            <div class="vinyl-container">
+                <div class="record"></div>
+                <div class="record-center-img-wrapper">
+                    <img src="cover.jpeg" alt="Center" class="record-center-img">
+                </div>
+            </div>
+
+            <p class="music-desc">Senin için hazırladığım Spotify listesine aşağıdaki butondan ulaşabilirsin:</p>
+            
+            <a href="YOUR_SPOTIFY_PLAYLIST_LINK_HERE" target="_blank" class="spotify-link">
+                Spotify'da Dinle 🎧
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
