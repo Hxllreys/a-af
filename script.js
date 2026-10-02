@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const yesBtn = document.getElementById('yes-btn');
     const noBtn = document.getElementById('no-btn');
     const countdownVal = document.getElementById('countdown-val');
+    const choiceArea = document.getElementById('choice-area');
 
     let yesScale = 1;
-    let noScale = 1;
 
     // 1. Adımdan 2. Adıma geçiş
     introBtn.addEventListener('click', () => {
@@ -18,18 +18,23 @@ document.addEventListener("DOMContentLoaded", function () {
         sureScreen.classList.remove('hidden');
     });
 
-    // Hayır butonuna basıldıkça Evet büyür, Hayır küçülür/kaybolur
+    // Hayır butonuna basıldığında konum değiştirir, Evet butonu hem en hem boy olarak büyür
     noBtn.addEventListener('click', () => {
-        yesScale += 0.2;
-        noScale -= 0.15;
-        
+        // Evet butonunu büyüt
+        yesScale += 0.35;
         yesBtn.style.transform = `scale(${yesScale})`;
+
+        // Hayır butonunu kaçır (Kart sınırları içinde rastgele pozisyon)
+        noBtn.style.position = 'absolute';
         
-        if (noScale > 0.2) {
-            noBtn.style.transform = `scale(${noScale})`;
-        } else {
-            noBtn.style.display = 'none';
-        }
+        const maxX = choiceArea.clientWidth - noBtn.clientWidth;
+        const maxY = choiceArea.clientHeight - noBtn.clientHeight;
+
+        const randomX = Math.floor(Math.random() * (maxX + 80)) - 40;
+        const randomY = Math.floor(Math.random() * (maxY + 60)) - 30;
+
+        noBtn.style.left = `${randomX}px`;
+        noBtn.style.top = `${randomY}px`;
     });
 
     // Evet butonuna basıldığında 10'dan geriye sayım başlar

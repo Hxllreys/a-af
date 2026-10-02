@@ -14,6 +14,7 @@ body {
     align-items: center; 
     min-height: 100vh; 
     padding: 20px 15px; 
+    overflow: hidden;
 }
 
 .card { 
@@ -32,7 +33,7 @@ body {
 .hidden { display: none !important; }
 
 .main-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: #fff1f2;
     margin-bottom: 12px;
     font-weight: 700;
@@ -41,7 +42,7 @@ body {
 h2 { 
     color: #fff1f2; 
     margin-bottom: 20px; 
-    font-size: 1.3rem; 
+    font-size: 1.25rem; 
     font-weight: 600; 
 }
 
@@ -60,22 +61,24 @@ h2 {
     font-size: 1rem; 
     font-weight: 600;
     cursor: pointer; 
-    transition: all 0.2s ease; 
     box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
     width: 100%;
 }
 
 .choice-container {
+    position: relative;
     display: flex;
     gap: 12px;
     justify-content: center;
     align-items: center;
     margin-top: 15px;
+    min-height: 60px;
 }
 
 .choice-btn {
     flex: 1;
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.25s ease, top 0.25s ease, left 0.25s ease;
+    z-index: 2;
 }
 
 .secondary-btn {
@@ -116,7 +119,7 @@ h2 {
 }
 
 .playlist-name { 
-    font-size: 1.35rem; 
+    font-size: 1.3rem; 
     font-weight: 700; 
     color: #ffffff; 
     margin-bottom: 4px; 
@@ -193,11 +196,11 @@ h2 {
     transform: scale(1.03);
 }
 
-/* Apple Emoji Görsel Hizalaması */
+/* Emojilerin boyutu ve uyumu düzenlendi */
 img.emoji {
-    height: 1.2em;
-    width: 1.2em;
-    margin: 0 0.15em;
-    vertical-align: -0.18em;
+    height: 1.1em;
+    width: 1.1em;
+    margin: 0 0.1em;
+    vertical-align: -0.15em;
     display: inline-block;
 }
