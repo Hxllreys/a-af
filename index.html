@@ -8,10 +8,10 @@
 </head>
 <body>
 
-    <!-- GİZLİ YOUTUBE SES OYNATICI -->
-    <div style="position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;">
-        <div id="youtube-player"></div>
-    </div>
+    <!-- ARKA PLAN SESİ -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://files.catbox.moe/u8o0y1.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="card">
         <!-- 1. ADIM -->
@@ -70,8 +70,6 @@
         </div>
     </div>
 
-    <!-- YOUTUBE IFRAME API -->
-    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="script.js"></script>
 </body>
 </html>
