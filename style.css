@@ -130,82 +130,92 @@ h2 {
     100% { transform: scale(1.08); }
 }
 
-/* 3D HEDİYE KUTUSU */
-.gift-box-wrapper {
-    perspective: 1000px;
-    margin: 30px auto;
-    cursor: pointer;
-    width: 120px;
-    height: 120px;
+/* 3D HEDİYE KUTUSU DÜZENİ */
+.gift-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    perspective: 800px;
 }
 
 .gift-box {
-    width: 100%;
-    height: 100%;
     position: relative;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 
 .gift-box:hover {
-    transform: rotateY(15deg) rotateX(10deg);
+    transform: rotateY(10deg) rotateX(5deg) scale(1.05);
 }
 
 .gift-body {
-    width: 100%;
-    height: 100px;
     position: absolute;
     bottom: 0;
+    width: 100px;
+    height: 90px;
+    left: 10px;
     background: #e11d48;
-    border-radius: 8px;
+    border-radius: 0 0 10px 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    overflow: hidden;
 }
 
-.gift-lid {
-    width: 108%;
-    height: 30px;
-    position: absolute;
-    top: 0;
-    left: -4%;
-    background: #f43f5e;
-    border-radius: 6px;
-    z-index: 2;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-.ribbon-v {
+.body-ribbon {
     position: absolute;
     width: 20px;
     height: 100%;
     background: #fbbf24;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 40px;
 }
 
-.ribbon-h {
+.gift-lid {
     position: absolute;
-    height: 20px;
-    width: 100%;
+    top: 10px;
+    width: 116px;
+    height: 25px;
+    left: 2px;
+    background: #f43f5e;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 5;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+
+.lid-ribbon {
+    position: absolute;
+    width: 20px;
+    height: 100%;
     background: #fbbf24;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 48px;
 }
 
 .bow {
     position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: -16px;
+    left: 43px;
     width: 30px;
-    height: 15px;
+    height: 16px;
     background: #fbbf24;
     border-radius: 15px 15px 0 0;
 }
 
-.gift-box-wrapper.open .gift-lid {
-    transform: translateY(-80px) rotate(-20deg);
+.bow::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 10px;
+    width: 10px;
+    height: 8px;
+    background: #d97706;
+    border-radius: 50%;
+}
+
+/* Kutunun Açılma Animasyonu */
+.gift-box.open .gift-lid {
+    transform: translateY(-90px) rotate(-25deg);
     opacity: 0;
 }
 
