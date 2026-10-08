@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Tüm emojileri vektörel iPhone tarzı emojilere dönüştür
+    if (typeof twemoji !== 'undefined') {
+        twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+    }
+
     const introScreen = document.getElementById('step-intro');
     const sureScreen = document.getElementById('step-sure');
     const countdownScreen = document.getElementById('step-countdown');
@@ -16,9 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     introBtn.addEventListener('click', () => {
         if (bgMusic) {
-            bgMusic.play().catch(error => {
-                console.log("Müzik oynatılırken engel takıldı:", error);
-            });
+            bgMusic.muted = false;
+            let playPromise = bgMusic.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log("Müzik başarıyla başlatıldı!");
+                }).catch(error => {
+                    console.log("Tarayıcı engeli veya yükleme hatası:", error);
+                });
+            }
         }
 
         introScreen.classList.add('hidden');
@@ -56,6 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
         yesBtn.style.width = `${newWidth}px`;
         yesBtn.style.height = `${newHeight}px`;
         yesBtn.style.fontSize = `${newFontSize}rem`;
+
+        // Dinamik değişen buton emojisini tekrar tara
+        if (typeof twemoji !== 'undefined') {
+            twemoji.parse(yesBtn, { folder: 'svg', ext: '.svg' });
+        }
     });
 
     yesBtn.addEventListener('click', () => {
@@ -83,6 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             giftScreen.classList.add('hidden');
             playlistScreen.classList.remove('hidden');
+            // Yeni açılan ekrandaki emojileri tara
+            if (typeof twemoji !== 'undefined') {
+                twemoji.parse(playlistScreen, { folder: 'svg', ext: '.svg' });
+            }
         }, 750);
     });
 });
