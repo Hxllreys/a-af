@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sürpriz</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Twemoji Scripti (iPhone tarzı emojiler için) -->
-    <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+    <!-- Apple/iPhone Emojileri için Twemoji CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
     <style>
+        /* iPhone Emojilerinin Net ve Düzgün Görünmesi İçin CSS */
         img.emoji {
-            height: 1em;
-            width: 1em;
-            margin: 0 .05em 0 .1em;
-            vertical-align: -0.1em;
-            display: inline-block;
+            height: 1.2em !important;
+            width: 1.2em !important;
+            margin: 0 0.15em !important;
+            vertical-align: -0.2em !important;
+            display: inline-block !important;
         }
     </style>
 </head>
@@ -36,7 +37,7 @@
         <div id="step-sure" class="hidden">
             <h2 id="sure-title">Hediyeni açmak istediğinden emin misin? 🤑</h2>
             <div class="choice-container">
-                <button id="yes-btn" class="choice-btn primary-btn">Evet! ♥️</button>
+                <button id="yes-btn" class="choice-btn primary-btn">Evet! ❤️</button>
                 <button id="no-btn" class="choice-btn secondary-btn">Hayır 💔</button>
             </div>
         </div>

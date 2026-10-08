@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Emojileri Apple tarzı vektörel Twemoji'ye çevirme fonksiyonu
     const parseEmojis = () => {
         if (typeof twemoji !== 'undefined') {
-            twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+            twemoji.parse(document.body, {
+                folder: 'svg',
+                ext: '.svg'
+            });
         }
     };
 
+    // İlk açılışta tara
     parseEmojis();
 
     const introScreen = document.getElementById('step-intro');
@@ -23,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let clickCount = 0;
 
-    // Hayır'a basıldığında değişecek ikna cümleleri
     const messages = [
         "Emin misin? 🥺",
         "Beni kırma lütfen... 💔",
@@ -40,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             if (playPromise !== undefined) {
                 playPromise.then(() => {
-                    console.log("Müzik başarıyla başlatıldı!");
+                    console.log("Müzik başarıyla başladı!");
                 }).catch(error => {
                     console.log("Müzik engeli:", error);
                 });
@@ -55,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
     noBtn.addEventListener('click', () => {
         clickCount++;
 
-        // Başlığı sıra sıra ikna cümleleriyle güncelle
         const messageIndex = Math.min(clickCount - 1, messages.length - 1);
         sureTitle.innerText = messages[messageIndex];
 
