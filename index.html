@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sürpriz</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Twemoji Scripti -->
+    <!-- Twemoji Scripti (iPhone tarzı emojiler için) -->
     <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
     <style>
-        /* Emojilerin metinle hizalı ve düzgün boyutta görünmesi için ek CSS */
         img.emoji {
             height: 1em;
             width: 1em;
@@ -20,7 +19,7 @@
 </head>
 <body>
 
-    <!-- YÜKLEDİĞİN MP3 DOSYASI -->
+    <!-- MÜZİK DOSYASI -->
     <audio id="bg-music" loop preload="auto">
         <source src="muzik.mp3" type="audio/mpeg">
     </audio>
@@ -35,10 +34,10 @@
 
         <!-- 2. ADIM -->
         <div id="step-sure" class="hidden">
-            <h2>Hediyeni açmak istediğinden emin misin? 🤑</h2>
+            <h2 id="sure-title">Hediyeni açmak istediğinden emin misin? 🤑</h2>
             <div class="choice-container">
-                <button id="yes-btn" class="choice-btn primary-btn">Evet! 🤩</button>
-                <button id="no-btn" class="choice-btn secondary-btn">Hayır 😜</button>
+                <button id="yes-btn" class="choice-btn primary-btn">Evet! ♥️</button>
+                <button id="no-btn" class="choice-btn secondary-btn">Hayır 💔</button>
             </div>
         </div>
 

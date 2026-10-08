@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Tüm emojileri vektörel iPhone tarzı emojilere dönüştür
-    if (typeof twemoji !== 'undefined') {
-        twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
-    }
+    const parseEmojis = () => {
+        if (typeof twemoji !== 'undefined') {
+            twemoji.parse(document.body, { folder: 'svg', ext: '.svg' });
+        }
+    };
+
+    parseEmojis();
 
     const introScreen = document.getElementById('step-intro');
     const sureScreen = document.getElementById('step-sure');
@@ -10,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const giftScreen = document.getElementById('step-gift');
     const playlistScreen = document.getElementById('step-playlist');
 
+    const sureTitle = document.getElementById('sure-title');
     const introBtn = document.getElementById('intro-btn');
     const yesBtn = document.getElementById('yes-btn');
     const noBtn = document.getElementById('no-btn');
@@ -18,6 +22,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const bgMusic = document.getElementById('bg-music');
 
     let clickCount = 0;
+
+    // Hayır'a basıldığında değişecek ikna cümleleri
+    const messages = [
+        "Emin misin? 🥺",
+        "Beni kırma lütfen... 💔",
+        "Hayır'a basmak istemediğini biliyorum! 😉",
+        "Hadi ama, Evet'e bas artık! ✨",
+        "Kaçamazsın! 😜",
+        "Son şansın, Evet'e tıkla! ❤️"
+    ];
 
     introBtn.addEventListener('click', () => {
         if (bgMusic) {
@@ -28,17 +42,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 playPromise.then(() => {
                     console.log("Müzik başarıyla başlatıldı!");
                 }).catch(error => {
-                    console.log("Tarayıcı engeli veya yükleme hatası:", error);
+                    console.log("Müzik engeli:", error);
                 });
             }
         }
 
         introScreen.classList.add('hidden');
         sureScreen.classList.remove('hidden');
+        parseEmojis();
     });
 
     noBtn.addEventListener('click', () => {
         clickCount++;
+
+        // Başlığı sıra sıra ikna cümleleriyle güncelle
+        const messageIndex = Math.min(clickCount - 1, messages.length - 1);
+        sureTitle.innerText = messages[messageIndex];
 
         if (noBtn.parentNode !== document.body) {
             document.body.appendChild(noBtn);
@@ -69,10 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
         yesBtn.style.height = `${newHeight}px`;
         yesBtn.style.fontSize = `${newFontSize}rem`;
 
-        // Dinamik değişen buton emojisini tekrar tara
-        if (typeof twemoji !== 'undefined') {
-            twemoji.parse(yesBtn, { folder: 'svg', ext: '.svg' });
-        }
+        parseEmojis();
     });
 
     yesBtn.addEventListener('click', () => {
@@ -91,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 clearInterval(timer);
                 countdownScreen.classList.add('hidden');
                 giftScreen.classList.remove('hidden');
+                parseEmojis();
             }
         }, 1000);
     });
@@ -100,10 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             giftScreen.classList.add('hidden');
             playlistScreen.classList.remove('hidden');
-            // Yeni açılan ekrandaki emojileri tara
-            if (typeof twemoji !== 'undefined') {
-                twemoji.parse(playlistScreen, { folder: 'svg', ext: '.svg' });
-            }
+            parseEmojis();
         }, 750);
     });
 });
